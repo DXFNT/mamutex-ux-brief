@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mamutex.cz — UX Redesign Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:#05024E;color:#fff;min-height:100vh;-webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:#00D4FF;text-decoration:none;transition:color .2s}
+a:hover{color:#0065F7}
+
+/* HERO */
+.hero{padding:48px 20px 40px;background:linear-gradient(135deg,#05024E 0%,#0a0566 40%,#05024E 100%);position:relative;overflow:hidden;text-align:center}
+.hero::before{content:'';position:absolute;top:-40%;right:-20%;width:60%;height:180%;background:radial-gradient(ellipse,rgba(0,101,247,.1) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-30%;left:-20%;width:60%;height:120%;background:radial-gradient(ellipse,rgba(0,212,255,.06) 0%,transparent 70%);pointer-events:none}
+.tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#00D4FF;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);padding:6px 18px;border-radius:24px;margin-bottom:16px}
+.hero h1{font-size:clamp(32px,6vw,52px);font-weight:800;line-height:1.1;margin-bottom:8px}
+.hero h1 .gradient{background:linear-gradient(135deg,#0065F7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .subtitle{font-size:clamp(14px,2vw,17px);color:rgba(255,255,255,.5);margin-bottom:24px;max-width:560px;margin-left:auto;margin-right:auto}
+.hero .meta{font-size:12px;color:rgba(255,255,255,.35);margin-bottom:28px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 20px}
+.hero .meta span{display:inline-flex;align-items:center;gap:4px}
+.hero .meta span::before{content:'';width:4px;height:4px;border-radius:50%;background:rgba(0,212,255,.5)}
+.kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:480px;margin:0 auto}
+.kpi{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:18px 12px;text-align:center;backdrop-filter:blur(8px)}
+.kpi .val{font-size:clamp(24px,4vw,36px);font-weight:800;background:linear-gradient(135deg,#0065F7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.kpi .lbl{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+
+/* PROGRESS BAR */
+.progress-bar-wrap{position:sticky;top:0;z-index:100;background:rgba(5,2,78,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);padding:10px 20px;display:flex;align-items:center;gap:12px}
+.progress-bar-wrap .label{font-size:11px;color:rgba(255,255,255,.5);white-space:nowrap;font-weight:500}
+.progress-track{flex:1;height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#0065F7,#00D4FF);border-radius:3px;transition:width .3s ease;width:0%}
+.progress-count{font-size:11px;color:#00D4FF;font-weight:600;white-space:nowrap}
+
+/* CONTAINER */
+.container{max-width:900px;margin:0 auto;padding:0 20px 60px}
+
+/* PRIORITY LEGEND */
+.legend{margin:36px 0 28px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:20px 24px}
+.legend h3{font-size:13px;font-weight:600;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}
+.legend-items{display:flex;flex-wrap:wrap;gap:10px 20px}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.legend-dot.p5{background:#FF4444}
+.legend-dot.p4{background:#FF8800}
+.legend-dot.p3{background:#FFB800}
+.legend-dot.p2{background:#0065F7}
+.legend-dot.p1{background:#666}
+
+/* TOC */
+.toc{margin:28px 0 36px}
+.toc h2{font-size:18px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.toc h2::before{content:'';width:4px;height:20px;background:linear-gradient(135deg,#0065F7,#00D4FF);border-radius:2px}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}
+.toc-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
+.toc-card:hover{background:rgba(0,101,247,.1);border-color:rgba(0,101,247,.3)}
+.toc-num{font-size:11px;font-weight:700;color:#0065F7;background:rgba(0,101,247,.12);width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.toc-info{flex:1;min-width:0}
+.toc-info .name{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toc-info .count{font-size:10px;color:rgba(255,255,255,.35)}
+
+/* SECTIONS */
+.section-block{margin-bottom:16px}
+.section-header{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 20px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:all .2s;user-select:none}
+.section-header:hover{background:rgba(0,101,247,.08);border-color:rgba(0,101,247,.2)}
+.section-header.open{border-radius:14px 14px 0 0;border-bottom-color:transparent;background:rgba(0,101,247,.06)}
+.section-num{font-size:14px;font-weight:800;color:#0065F7;background:rgba(0,101,247,.1);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.section-title{flex:1;font-size:14px;font-weight:600}
+.section-count{font-size:11px;color:rgba(255,255,255,.4);background:rgba(255,255,255,.06);padding:4px 10px;border-radius:8px;white-space:nowrap}
+.section-arrow{width:20px;height:20px;color:rgba(255,255,255,.3);transition:transform .25s;flex-shrink:0}
+.section-header.open .section-arrow{transform:rotate(180deg)}
+
+.section-body{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-top:none;border-radius:0 0 14px 14px;padding:12px;display:none}
+.section-body.open{display:block}
+
+/* TASK CARDS */
+.task{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:14px 16px;margin-bottom:6px;display:flex;align-items:flex-start;gap:12px;transition:background .2s}
+.task:last-child{margin-bottom:0}
+.task:hover{background:rgba(255,255,255,.05)}
+.task-id{font-size:11px;font-weight:700;color:rgba(255,255,255,.3);white-space:nowrap;min-width:32px;padding-top:2px}
+.task-content{flex:1}
+.task-desc{font-size:13px;font-weight:400;line-height:1.5;color:rgba(255,255,255,.8)}
+.task-meta{display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap}
+.badge{font-size:10px;font-weight:600;padding:3px 10px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px}
+.badge.kriticka{background:rgba(255,68,68,.15);color:#FF4444;border:1px solid rgba(255,68,68,.2)}
+.badge.velmi-vysoka{background:rgba(255,136,0,.15);color:#FF8800;border:1px solid rgba(255,136,0,.2)}
+.badge.vysoka{background:rgba(255,184,0,.15);color:#FFB800;border:1px solid rgba(255,184,0,.2)}
+.badge.stredni{background:rgba(0,101,247,.15);color:#6BA5FF;border:1px solid rgba(0,101,247,.2)}
+.badge.nizka{background:rgba(100,100,100,.15);color:#999;border:1px solid rgba(100,100,100,.2)}
+.figma-ref{font-size:10px;color:rgba(255,255,255,.2);font-style:italic}
+
+/* FOOTER */
+.footer{text-align:center;padding:40px 20px;border-top:1px solid rgba(255,255,255,.06);margin-top:20px}
+.footer .brand{font-size:14px;font-weight:600;color:rgba(255,255,255,.3)}
+.footer .brand span{background:linear-gradient(135deg,#0065F7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.footer .copy{font-size:11px;color:rgba(255,255,255,.15);margin-top:6px}
+
+@media(max-width:480px){
+  .hero{padding:32px 16px 28px}
+  .kpi-row{gap:8px}
+  .kpi{padding:14px 8px}
+  .container{padding:0 12px 40px}
+  .legend{padding:16px}
+  .legend-items{gap:8px 16px}
+  .section-header{padding:12px 14px;gap:10px}
+  .section-title{font-size:13px}
+  .task{padding:12px;gap:8px}
+  .toc-grid{grid-template-columns:1fr}
+}
+@media(min-width:768px){
+  .hero{padding:60px 40px 48px}
+  .container{padding:0 40px 60px}
+  .section-body{padding:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="tag">UX &amp; Redesign Brief</div>
+  <h1><span class="gradient">Mamutex.cz</span></h1>
+  <div class="subtitle">Redizajn eshopu na základe analýzy použitelnosti</div>
+  <div class="meta">
+    <span>UX konzultant: Kvasnička Jan</span>
+    <span>Platforma: Shoptet</span>
+    <span>200 úloh</span>
+    <span>312 Figma odkazov</span>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="val">200</div><div class="lbl">Úloh</div></div>
+    <div class="kpi"><div class="val">32</div><div class="lbl">Sekcí</div></div>
+    <div class="kpi"><div class="val">312</div><div class="lbl">Figma refs</div></div>
+  </div>
+</div>
+
+<!-- PROGRESS BAR (sticky) -->
+<div class="progress-bar-wrap">
+  <div class="label">Vizualizace</div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-count" id="progressCount">0 of 200 tasks</div>
+</div>
+
+<div class="container">
+
+<!-- PRIORITY LEGEND -->
+<div class="legend">
+  <h3>Priorita</h3>
+  <div class="legend-items">
+    <div class="legend-item"><span class="legend-dot p5"></span>5/5 Kritická</div>
+    <div class="legend-item"><span class="legend-dot p4"></span>4/5 Velmi vysoká</div>
+    <div class="legend-item"><span class="legend-dot p3"></span>3/5 Vysoká</div>
+    <div class="legend-item"><span class="legend-dot p2"></span>2/5 Střední</div>
+    <div class="legend-item"><span class="legend-dot p1"></span>1/5 Nízká</div>
+  </div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h2>Obsah &mdash; 32 sekcí</h2>
+  <div class="toc-grid" id="tocGrid"></div>
+</div>
+
+<!-- SECTIONS (generated by JS) -->
+<div id="sectionsContainer"></div>
+
+</div><!-- /container -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="brand"><span>Dexfinity</span> &times; Detaility</div>
+  <div class="copy">Mamutex.cz UX Redesign 2026</div>
+</div>
+
+<script>
+// SVG arrow icon
+const arrowSVG = '<svg class="section-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+// All 32 sections with tasks
+const sections = [
+  {
+    id: 1,
+    name: "Design System / Celkový redesign",
+    tasks: [
+      { id:"1.1", desc:"Revize typografie - zkontrolovat hierarchii nadpisů (H1-H6)", priority:"Vysoká", figma:"F-001–F-008" },
+      { id:"1.2", desc:"Definovat a sjednotit hover efekty pro všechny aktivní prvky", priority:"Vysoká", figma:"F-009–F-015" },
+      { id:"1.3", desc:"Vyřešit barvu odkazů - fialové odkazy berou příliš pozornosti", priority:"Vysoká", figma:"F-016–F-022" },
+      { id:"1.4", desc:"Přestat používat šedou barvu pro aktivní prvky", priority:"Vysoká", figma:"F-023–F-028" },
+      { id:"1.5", desc:"Sjednotit konverzní barvu", priority:"Vysoká", figma:"F-029–F-035" },
+      { id:"1.6", desc:"Zajistit minimální velikost písma 13px", priority:"Vysoká", figma:"F-036–F-041" },
+      { id:"1.7", desc:"Opravit kontrasty textů", priority:"Vysoká", figma:"F-042–F-050" },
+      { id:"1.8", desc:"Sjednotit spacing/vzdušnost (27 komentářů)", priority:"Vysoká", figma:"F-051–F-077" },
+      { id:"1.9", desc:"Vytvořit signature prvky a brandovou identitu", priority:"Vysoká", figma:"F-078–F-084" },
+      { id:"1.10", desc:"Vytvořit specifický vizuál pro Mamutex+", priority:"Vysoká", figma:"F-085–F-092" },
+      { id:"1.11", desc:"Přestat používat verzálky v textech", priority:"Střední", figma:"F-093–F-096" },
+      { id:"1.12", desc:"Nastavit řádkování na 1.5", priority:"Nízká", figma:"F-097" },
+      { id:"1.13", desc:"Formátování cen s mezerami", priority:"Nízká", figma:"F-098" },
+      { id:"1.14", desc:"Navrhnout ikony pro kategorie", priority:"Vysoká", figma:"F-099–F-108" }
+    ]
+  },
+  {
+    id: 2,
+    name: "Hlavička (Header) - Desktop",
+    tasks: [
+      { id:"2.1", desc:"Navrhnout sticky/fixní minimalizovanou hlavičku", priority:"Vysoká", figma:"F-109–F-113" },
+      { id:"2.2", desc:"Přidat osobní kontakt s fotkou do hlavičky", priority:"Vysoká", figma:"F-114–F-116" },
+      { id:"2.3", desc:"Zvýraznit vyhledávací pole", priority:"Vysoká", figma:"F-117–F-120" },
+      { id:"2.4", desc:"Odstranit email z hlavičky", priority:"Střední", figma:"F-121" },
+      { id:"2.5", desc:"Navrhnout marketingovou lištu nad hlavičkou", priority:"Střední", figma:"F-122–F-125" }
+    ]
+  },
+  {
+    id: 3,
+    name: "Hlavička (Header) - Mobil",
+    tasks: [
+      { id:"3.1", desc:"Změnit barvu ikon z šedé na tmavou", priority:"Vysoká", figma:"F-126–F-129" },
+      { id:"3.2", desc:"Přidat ikonu lupy do vyhledávání", priority:"Vysoká", figma:"F-130–F-131" },
+      { id:"3.3", desc:"Přidat online/offline tečku k chatu", priority:"Střední", figma:"F-132" },
+      { id:"3.4", desc:"Zobrazit marketingovou lištu i na mobilu", priority:"Střední", figma:"F-133–F-135" }
+    ]
+  },
+  {
+    id: 4,
+    name: "Mobilní navigace",
+    tasks: [
+      { id:"4.1", desc:"Oddělit řádek menu svislou čárou", priority:"Vysoká", figma:"F-136–F-138" },
+      { id:"4.2", desc:"Přidat více vzdušnosti pro touch zóny", priority:"Vysoká", figma:"F-139–F-142" },
+      { id:"4.3", desc:"Přidat podtržení k odkazům v menu", priority:"Vysoká", figma:"F-143–F-144" },
+      { id:"4.4", desc:"Opravit prosvítání navigačních teček", priority:"Vysoká", figma:"F-145–F-146" },
+      { id:"4.5", desc:"Redesign odkazů na neproduktové stránky", priority:"Střední", figma:"F-147–F-149" }
+    ]
+  },
+  {
+    id: 5,
+    name: "Homepage",
+    tasks: [
+      { id:"5.1", desc:"Navrhnout hero banner s jasným CTA a hodnotovou propozicí", priority:"Kritická", figma:"F-150–F-155" },
+      { id:"5.2", desc:"Přidat USP lištu pod hero (doprava zdarma, garance, Mamutex+)", priority:"Vysoká", figma:"F-156–F-159" },
+      { id:"5.3", desc:"Redesign sekce kategorií na homepage — vizuální ikony", priority:"Vysoká", figma:"F-160–F-165" },
+      { id:"5.4", desc:"Navrhnout sekci \"Proč Mamutex\" s důvěryhodnými prvky", priority:"Vysoká", figma:"F-166–F-169" },
+      { id:"5.5", desc:"Přepracovat zobrazení bestseller produktů", priority:"Vysoká", figma:"F-170–F-174" },
+      { id:"5.6", desc:"Navrhnout newsletter signup blok", priority:"Střední", figma:"F-175–F-177" },
+      { id:"5.7", desc:"Přidat sekci reference/recenze zákazníků na homepage", priority:"Vysoká", figma:"F-178–F-181" },
+      { id:"5.8", desc:"Navrhnout Mamutex+ promo blok na homepage", priority:"Vysoká", figma:"F-182–F-186" },
+      { id:"5.9", desc:"Opravit hierachii a pořadí sekcí na homepage", priority:"Vysoká", figma:"F-187–F-190" },
+      { id:"5.10", desc:"Přidat drobečkovou navigaci", priority:"Střední", figma:"F-191" },
+      { id:"5.11", desc:"Navrhnout sekci \"Poslední prohlížené\" pro vracející se návštěvníky", priority:"Střední", figma:"F-192–F-194" },
+      { id:"5.12", desc:"Sjednotit spacing a odsazení bloků na homepage", priority:"Vysoká", figma:"F-195–F-198" },
+      { id:"5.13", desc:"Mobilní verze hero banneru — vertikální layout", priority:"Vysoká", figma:"F-199–F-202" },
+      { id:"5.14", desc:"Navrhnout banner rotátor s auto-play a manuální navigací", priority:"Střední", figma:"F-202a–F-202c" }
+    ]
+  },
+  {
+    id: 6,
+    name: "Vyhledávání",
+    tasks: [
+      { id:"6.1", desc:"Navrhnout rozbalené vyhledávání s live suggestions", priority:"Vysoká", figma:"F-203–F-207" },
+      { id:"6.2", desc:"Přidat produktové náhledy do výsledků vyhledávání", priority:"Vysoká", figma:"F-208–F-211" },
+      { id:"6.3", desc:"Navrhnout stav \"žádné výsledky\" s doporučením", priority:"Střední", figma:"F-212–F-213" },
+      { id:"6.4", desc:"Zvýraznit shodu v hledaném textu", priority:"Střední", figma:"F-214" },
+      { id:"6.5", desc:"Přidat historii hledání", priority:"Nízká", figma:"F-215" },
+      { id:"6.6", desc:"Navrhnout mobilní full-screen vyhledávání", priority:"Vysoká", figma:"F-216–F-219" }
+    ]
+  },
+  {
+    id: 7,
+    name: "Kategorie — Výpis produktů",
+    tasks: [
+      { id:"7.1", desc:"Redesign filtrační lišty — srozumitelné popisky a počty", priority:"Vysoká", figma:"F-220–F-225" },
+      { id:"7.2", desc:"Navrhnout stav aktivních filtrů s možností odebrání", priority:"Vysoká", figma:"F-226–F-228" },
+      { id:"7.3", desc:"Sjednotit produktové karty ve výpisu", priority:"Vysoká", figma:"F-229–F-234" },
+      { id:"7.4", desc:"Navrhnout řazení produktů — UX výběr řazení", priority:"Střední", figma:"F-235–F-237" },
+      { id:"7.5", desc:"Mobilní filtry — spodní sheet místo overlay", priority:"Vysoká", figma:"F-238–F-242" },
+      { id:"7.6", desc:"Přidat category banner s popisem na vrch stránky", priority:"Střední", figma:"F-243–F-245" },
+      { id:"7.7", desc:"Počet produktů na stránku — výchozí hodnota a selector", priority:"Nízká", figma:"F-246" },
+      { id:"7.8", desc:"Navrhnout \"empty state\" pokud kategorie nemá produkty", priority:"Střední", figma:"F-247–F-248" }
+    ]
+  },
+  {
+    id: 8,
+    name: "Produktová karta (ve výpisu)",
+    tasks: [
+      { id:"8.1", desc:"Sjednotit velikost a poměr produktových obrázků", priority:"Vysoká", figma:"F-249–F-253" },
+      { id:"8.2", desc:"Redesign cenového bloku — akce, sleva, původní cena", priority:"Vysoká", figma:"F-254–F-258" },
+      { id:"8.3", desc:"Přidat štítky (Novinka, Bestseller, Akce) s vizuálním systémem", priority:"Vysoká", figma:"F-259–F-263" },
+      { id:"8.4", desc:"Hover stav karty — zvýraznění a quick actions", priority:"Střední", figma:"F-264–F-266" },
+      { id:"8.5", desc:"Přidat indikátor skladové dostupnosti", priority:"Vysoká", figma:"F-267–F-269" },
+      { id:"8.6", desc:"Navrhnout variantu karty pro grid/list view přepínání", priority:"Střední", figma:"F-270–F-272" }
+    ]
+  },
+  {
+    id: 9,
+    name: "Produktový detail",
+    tasks: [
+      { id:"9.1", desc:"Redesign galerie — zoom, swipe, thumbnail navigace", priority:"Vysoká", figma:"F-273–F-279" },
+      { id:"9.2", desc:"Přepracovat blok s cenou, variantami a CTA", priority:"Kritická", figma:"F-280–F-286" },
+      { id:"9.3", desc:"Navrhnout sekci produktových parametrů a specifikací", priority:"Vysoká", figma:"F-287–F-291" },
+      { id:"9.4", desc:"Přidat cross-sell blok \"Často kupováno společně\"", priority:"Vysoká", figma:"F-292–F-295" },
+      { id:"9.5", desc:"Redesign záložek (popis, recenze, parametry)", priority:"Střední", figma:"F-296–F-299" },
+      { id:"9.6", desc:"Sticky CTA bar na mobilu při scrollu produktového detailu", priority:"Vysoká", figma:"F-300–F-303" },
+      { id:"9.7", desc:"Navrhnout blok recenzí s hvězdičkami a foto", priority:"Vysoká", figma:"F-304–F-308" },
+      { id:"9.8", desc:"Přidat breadcrumbs a zpět na kategorii", priority:"Střední", figma:"F-309–F-310" },
+      { id:"9.9", desc:"Navrhnout sdílení produktu — link, sociální sítě, email", priority:"Nízká", figma:"F-310a" }
+    ]
+  },
+  {
+    id: 10,
+    name: "Košík",
+    tasks: [
+      { id:"10.1", desc:"Redesign mini košíku (dropdown) — přehlednost položek", priority:"Vysoká", figma:"F-311–F-315" },
+      { id:"10.2", desc:"Navrhnout upsell sekci v košíku", priority:"Vysoká", figma:"F-316–F-319" },
+      { id:"10.3", desc:"Přidat progress bar do dopravy zdarma", priority:"Vysoká", figma:"F-320–F-322" },
+      { id:"10.4", desc:"Sjednotit zobrazení slev a kupónů v košíku", priority:"Střední", figma:"F-323–F-325" },
+      { id:"10.5", desc:"Navrhnout prázdný košík s doporučeními", priority:"Střední", figma:"F-326–F-327" },
+      { id:"10.6", desc:"Mobilní košík — full-page layout", priority:"Vysoká", figma:"F-328–F-331" },
+      { id:"10.7", desc:"Přidat indikátor počtu položek na ikoně košíku", priority:"Střední", figma:"F-332" }
+    ]
+  },
+  {
+    id: 11,
+    name: "Checkout — Objednávkový proces",
+    tasks: [
+      { id:"11.1", desc:"Navrhnout kroky objednávky — progress indikátor", priority:"Kritická", figma:"F-333–F-338" },
+      { id:"11.2", desc:"Redesign formulářů — labeling, validace, error stavy", priority:"Kritická", figma:"F-339–F-345" },
+      { id:"11.3", desc:"Navrhnout výběr dopravy — vizuální karty s logy", priority:"Vysoká", figma:"F-346–F-350" },
+      { id:"11.4", desc:"Navrhnout výběr platby — vizuální karty s logy", priority:"Vysoká", figma:"F-351–F-355" },
+      { id:"11.5", desc:"Přidat rekapitulaci objednávky před odesláním", priority:"Vysoká", figma:"F-356–F-359" },
+      { id:"11.6", desc:"Navrhnout trust prvky v checkoutu (bezpečné platby, garance)", priority:"Střední", figma:"F-360–F-362" },
+      { id:"11.7", desc:"Mobilní optimalizace formulářů — input types, autofill", priority:"Vysoká", figma:"F-363–F-366" },
+      { id:"11.8", desc:"Navrhnout guest checkout bez nutnosti registrace", priority:"Vysoká", figma:"F-366a–F-366c" }
+    ]
+  },
+  {
+    id: 12,
+    name: "Poděkování za objednávku",
+    tasks: [
+      { id:"12.1", desc:"Redesign stránky poděkování — jasné potvrzení a další kroky", priority:"Vysoká", figma:"F-367–F-370" },
+      { id:"12.2", desc:"Přidat cross-sell na stránce poděkování", priority:"Střední", figma:"F-371–F-373" },
+      { id:"12.3", desc:"Navrhnout CTA pro registraci / Mamutex+ po objednávce", priority:"Střední", figma:"F-374–F-376" },
+      { id:"12.4", desc:"Přidat sdílení objednávky na sociální sítě", priority:"Nízká", figma:"F-377" }
+    ]
+  },
+  {
+    id: 13,
+    name: "Registrace a přihlášení",
+    tasks: [
+      { id:"13.1", desc:"Redesign přihlašovacího formuláře — čistý, minimální", priority:"Vysoká", figma:"F-378–F-381" },
+      { id:"13.2", desc:"Navrhnout registrační formulář s benefity registrace", priority:"Vysoká", figma:"F-382–F-386" },
+      { id:"13.3", desc:"Přidat social login (Google, Facebook)", priority:"Střední", figma:"F-387–F-389" },
+      { id:"13.4", desc:"Navrhnout stránku obnovy hesla", priority:"Střední", figma:"F-390–F-391" },
+      { id:"13.5", desc:"Mobilní optimalizace login/registrace", priority:"Vysoká", figma:"F-392–F-394" }
+    ]
+  },
+  {
+    id: 14,
+    name: "Zákaznický účet",
+    tasks: [
+      { id:"14.1", desc:"Redesign dashboard zákaznického účtu", priority:"Vysoká", figma:"F-395–F-399" },
+      { id:"14.2", desc:"Navrhnout přehled objednávek s historií a stavy", priority:"Vysoká", figma:"F-400–F-404" },
+      { id:"14.3", desc:"Navrhnout správu adres — přidání, editace, výchozí", priority:"Střední", figma:"F-405–F-407" },
+      { id:"14.4", desc:"Navrhnout stránku oblíbených produktů (wishlist)", priority:"Střední", figma:"F-408–F-410" },
+      { id:"14.5", desc:"Mamutex+ členská sekce v účtu", priority:"Vysoká", figma:"F-411–F-415" },
+      { id:"14.6", desc:"Mobilní zákaznický účet — tab navigace", priority:"Vysoká", figma:"F-416–F-419" }
+    ]
+  },
+  {
+    id: 15,
+    name: "Mamutex+ věrnostní program",
+    tasks: [
+      { id:"15.1", desc:"Navrhnout landing page Mamutex+ — benefity, levels, CTA", priority:"Kritická", figma:"F-420–F-428" },
+      { id:"15.2", desc:"Navrhnout vizuální systém pro member levels", priority:"Vysoká", figma:"F-429–F-433" },
+      { id:"15.3", desc:"Přidat Mamutex+ badge na produktové karty", priority:"Vysoká", figma:"F-434–F-436" },
+      { id:"15.4", desc:"Navrhnout komunikaci exkluzivních slev pro členy", priority:"Vysoká", figma:"F-437–F-440" },
+      { id:"15.5", desc:"Navrhnout onboarding flow pro nové členy", priority:"Střední", figma:"F-441–F-444" },
+      { id:"15.6", desc:"Navrhnout Mamutex+ progress bar (body/úrovně)", priority:"Střední", figma:"F-445–F-447" }
+    ]
+  },
+  {
+    id: 16,
+    name: "Footer",
+    tasks: [
+      { id:"16.1", desc:"Redesign footeru — přehledné sloupce s odkazy", priority:"Vysoká", figma:"F-448–F-452" },
+      { id:"16.2", desc:"Přidat newsletter signup do footeru", priority:"Vysoká", figma:"F-453–F-455" },
+      { id:"16.3", desc:"Přidat platební metody a certifikáty do footeru", priority:"Střední", figma:"F-456–F-458" },
+      { id:"16.4", desc:"Přidat sociální sítě do footeru", priority:"Střední", figma:"F-459–F-460" },
+      { id:"16.5", desc:"Mobilní footer — kolapsovatelné sekce", priority:"Vysoká", figma:"F-461–F-464" }
+    ]
+  },
+  {
+    id: 17,
+    name: "Bannery a promo",
+    tasks: [
+      { id:"17.1", desc:"Navrhnout šablonu pro akční bannery (sezóna, výprodej)", priority:"Vysoká", figma:"F-465–F-470" },
+      { id:"17.2", desc:"Navrhnout in-page promo stripy mezi produkty", priority:"Střední", figma:"F-471–F-473" },
+      { id:"17.3", desc:"Navrhnout popup pro speciální akce / newsletter", priority:"Střední", figma:"F-474–F-476" },
+      { id:"17.4", desc:"Navrhnout countdown timer pro časově omezené akce", priority:"Střední", figma:"F-477–F-479" },
+      { id:"17.5", desc:"Sjednotit formáty bannerů napříč webem", priority:"Vysoká", figma:"F-480–F-484" }
+    ]
+  },
+  {
+    id: 18,
+    name: "Trust prvky a sociální důkaz",
+    tasks: [
+      { id:"18.1", desc:"Navrhnout systém zobrazení recenzí (Heureka, Google)", priority:"Vysoká", figma:"F-485–F-489" },
+      { id:"18.2", desc:"Přidat trust badges na klíčové stránky", priority:"Vysoká", figma:"F-490–F-493" },
+      { id:"18.3", desc:"Navrhnout sekci \"Zákazníci nám důvěřují\" s čísly", priority:"Střední", figma:"F-494–F-496" },
+      { id:"18.4", desc:"Navrhnout zobrazení hodnocení na produktových kartách", priority:"Vysoká", figma:"F-497–F-500" },
+      { id:"18.5", desc:"Přidat B2B reference a loga firem", priority:"Střední", figma:"F-501–F-503" },
+      { id:"18.6", desc:"Navrhnout notification bar s čerstvými objednávkami", priority:"Nízká", figma:"F-504" }
+    ]
+  },
+  {
+    id: 19,
+    name: "Informační stránky",
+    tasks: [
+      { id:"19.1", desc:"Redesign stránky O nás — příběh, tým, hodnoty", priority:"Střední", figma:"F-505–F-508" },
+      { id:"19.2", desc:"Redesign stránky Kontakt — mapa, formulář, osobní kontakt", priority:"Vysoká", figma:"F-509–F-513" },
+      { id:"19.3", desc:"Navrhnout stránku Doprava a platba — přehledný layout", priority:"Vysoká", figma:"F-514–F-517" },
+      { id:"19.4", desc:"Redesign stránky Obchodní podmínky — čitelný formát", priority:"Střední", figma:"F-518–F-519" },
+      { id:"19.5", desc:"Navrhnout FAQ stránku s vyhledáváním a kategoriemi", priority:"Střední", figma:"F-520–F-523" },
+      { id:"19.6", desc:"Navrhnout stránku Reklamace — kroky procesu", priority:"Střední", figma:"F-524–F-526" }
+    ]
+  },
+  {
+    id: 20,
+    name: "Blog / Magazín",
+    tasks: [
+      { id:"20.1", desc:"Navrhnout listing blogových článků — karty s náhledem", priority:"Střední", figma:"F-527–F-530" },
+      { id:"20.2", desc:"Redesign šablony blogového článku — čitelnost, obrázky", priority:"Střední", figma:"F-531–F-535" },
+      { id:"20.3", desc:"Přidat related articles pod článek", priority:"Nízká", figma:"F-536–F-537" },
+      { id:"20.4", desc:"Navrhnout CTA bloky v článcích (produkt, newsletter)", priority:"Střední", figma:"F-538–F-540" },
+      { id:"20.5", desc:"Přidat sidebar s kategoriemi a populárními články", priority:"Nízká", figma:"F-541–F-542" }
+    ]
+  },
+  {
+    id: 21,
+    name: "B2B / Velkoobchod",
+    tasks: [
+      { id:"21.1", desc:"Navrhnout B2B landing page s benefity a registrací", priority:"Vysoká", figma:"F-543–F-548" },
+      { id:"21.2", desc:"Navrhnout B2B ceník / kalkulačku objemových slev", priority:"Vysoká", figma:"F-549–F-553" },
+      { id:"21.3", desc:"Navrhnout B2B registrační formulář s IČO validací", priority:"Střední", figma:"F-554–F-556" },
+      { id:"21.4", desc:"Navrhnout B2B produktový katalog ke stažení", priority:"Střední", figma:"F-557–F-559" },
+      { id:"21.5", desc:"B2B kontaktní formulář s výběrem segmentu", priority:"Střední", figma:"F-560–F-562" }
+    ]
+  },
+  {
+    id: 22,
+    name: "Mobilní specifika — globální",
+    tasks: [
+      { id:"22.1", desc:"Navrhnout bottom navigation bar pro mobil", priority:"Vysoká", figma:"F-563–F-568" },
+      { id:"22.2", desc:"Optimalizovat touch targets — minimum 44px", priority:"Vysoká", figma:"F-569–F-573" },
+      { id:"22.3", desc:"Navrhnout swipe gesta pro galerie a karusely", priority:"Střední", figma:"F-574–F-576" },
+      { id:"22.4", desc:"Přidat pull-to-refresh pattern", priority:"Nízká", figma:"F-577" },
+      { id:"22.5", desc:"Navrhnout mobilní sticky CTA pro konverzní stránky", priority:"Vysoká", figma:"F-578–F-581" },
+      { id:"22.6", desc:"Optimalizovat font-size pro mobilní čtení (min 14px)", priority:"Vysoká", figma:"F-582–F-585" },
+      { id:"22.7", desc:"Navrhnout landscape orientaci pro klíčové stránky", priority:"Nízká", figma:"F-585a" }
+    ]
+  },
+  {
+    id: 23,
+    name: "Notifikace a zprávy",
+    tasks: [
+      { id:"23.1", desc:"Navrhnout toast notifikace (přidáno do košíku, úspěch, chyba)", priority:"Vysoká", figma:"F-586–F-590" },
+      { id:"23.2", desc:"Navrhnout cookie bar — GDPR compliant", priority:"Vysoká", figma:"F-591–F-594" },
+      { id:"23.3", desc:"Navrhnout inline error a success stavy pro formuláře", priority:"Vysoká", figma:"F-595–F-599" },
+      { id:"23.4", desc:"Navrhnout systém modal oken (potvrzení, varování)", priority:"Střední", figma:"F-600–F-603" },
+      { id:"23.5", desc:"Navrhnout loading stavy a skeleton screens", priority:"Střední", figma:"F-604–F-607" }
+    ]
+  },
+  {
+    id: 24,
+    name: "Porovnání produktů",
+    tasks: [
+      { id:"24.1", desc:"Navrhnout funkci porovnání — výběr produktů", priority:"Střední", figma:"F-608–F-611" },
+      { id:"24.2", desc:"Navrhnout tabulku porovnání s highlighted rozdíly", priority:"Střední", figma:"F-612–F-615" },
+      { id:"24.3", desc:"Mobilní porovnání — swipe mezi produkty", priority:"Střední", figma:"F-616–F-618" },
+      { id:"24.4", desc:"Přidat CTA \"Přidat do košíku\" v porovnání", priority:"Nízká", figma:"F-619" }
+    ]
+  },
+  {
+    id: 25,
+    name: "Dostupnost (Accessibility)",
+    tasks: [
+      { id:"25.1", desc:"Audit kontrastů — WCAG AA compliance", priority:"Vysoká", figma:"F-620–F-625" },
+      { id:"25.2", desc:"Navrhnout focus stavy pro klávesovou navigaci", priority:"Vysoká", figma:"F-626–F-630" },
+      { id:"25.3", desc:"Zajistit alt texty pro všechny obrázky", priority:"Střední", figma:"F-631–F-633" },
+      { id:"25.4", desc:"Navrhnout skip-to-content odkaz", priority:"Nízká", figma:"F-634" },
+      { id:"25.5", desc:"Ověřit čitelnost s screen readerem", priority:"Střední", figma:"F-635–F-637" },
+      { id:"25.6", desc:"Navrhnout reduced-motion alternativy pro animace", priority:"Nízká", figma:"F-637a" }
+    ]
+  },
+  {
+    id: 26,
+    name: "Výkonnost a rychlost (UX)",
+    tasks: [
+      { id:"26.1", desc:"Navrhnout lazy loading pro obrázky a sekce", priority:"Vysoká", figma:"F-638–F-641" },
+      { id:"26.2", desc:"Navrhnout skeleton loading pro produktové karty", priority:"Střední", figma:"F-642–F-644" },
+      { id:"26.3", desc:"Optimalizovat obrázky — WebP formát, responsive sizes", priority:"Vysoká", figma:"F-645–F-648" },
+      { id:"26.4", desc:"Navrhnout optimized above-the-fold layout", priority:"Vysoká", figma:"F-649–F-652" },
+      { id:"26.5", desc:"Audit fontu — počet řezů a velikost Poppins/systémových fontů", priority:"Střední", figma:"F-653–F-654" }
+    ]
+  },
+  {
+    id: 27,
+    name: "SEO & Metadata (UX vrstva)",
+    tasks: [
+      { id:"27.1", desc:"Navrhnout strukturu heading hierarchie pro SEO", priority:"Vysoká", figma:"F-655–F-658" },
+      { id:"27.2", desc:"Navrhnout internal linking — related products, breadcrumbs", priority:"Vysoká", figma:"F-659–F-662" },
+      { id:"27.3", desc:"Navrhnout schema markup pro produkty (vizuální rich snippet)", priority:"Střední", figma:"F-663–F-665" },
+      { id:"27.4", desc:"Navrhnout stránku 404 — užitečná s doporučeními", priority:"Střední", figma:"F-666–F-668" },
+      { id:"27.5", desc:"Optimalizovat URL strukturu v návrzích", priority:"Střední", figma:"F-669–F-670" }
+    ]
+  },
+  {
+    id: 28,
+    name: "Animace a mikro-interakce",
+    tasks: [
+      { id:"28.1", desc:"Navrhnout hover animace pro produktové karty", priority:"Střední", figma:"F-671–F-674" },
+      { id:"28.2", desc:"Navrhnout animaci přidání do košíku", priority:"Střední", figma:"F-675–F-677" },
+      { id:"28.3", desc:"Scroll-triggered animace pro homepage sekce", priority:"Nízká", figma:"F-678–F-680" },
+      { id:"28.4", desc:"Navrhnout page transition animace", priority:"Nízká", figma:"F-681–F-682" },
+      { id:"28.5", desc:"Loading animace pro tlačítka a formuláře", priority:"Střední", figma:"F-683–F-685" }
+    ]
+  },
+  {
+    id: 29,
+    name: "Responsivní breakpointy",
+    tasks: [
+      { id:"29.1", desc:"Definovat breakpointy — mobile, tablet, desktop, wide", priority:"Vysoká", figma:"F-686–F-690" },
+      { id:"29.2", desc:"Navrhnout tablet layout — kategorie, produktový detail", priority:"Vysoká", figma:"F-691–F-695" },
+      { id:"29.3", desc:"Navrhnout wide-screen (1440px+) layout", priority:"Střední", figma:"F-696–F-698" },
+      { id:"29.4", desc:"Ověřit grid systém pro všechny breakpointy", priority:"Vysoká", figma:"F-699–F-702" },
+      { id:"29.5", desc:"Navrhnout adaptivní navigaci pro tablet", priority:"Střední", figma:"F-703–F-705" }
+    ]
+  },
+  {
+    id: 30,
+    name: "Ikonografie a grafické prvky",
+    tasks: [
+      { id:"30.1", desc:"Navrhnout konzistentní ikonu set pro celý eshop", priority:"Vysoká", figma:"F-706–F-712" },
+      { id:"30.2", desc:"Navrhnout ilustrace pro prázdné stavy (empty cart, no results)", priority:"Střední", figma:"F-713–F-716" },
+      { id:"30.3", desc:"Navrhnout ikony pro kategorie (regály, pneumatiky...)", priority:"Vysoká", figma:"F-717–F-722" },
+      { id:"30.4", desc:"Navrhnout iconové badge systém (novinka, sleva, doprava zdarma)", priority:"Vysoká", figma:"F-723–F-727" },
+      { id:"30.5", desc:"Sjednotit velikosti a styl ikon (stroke vs. fill)", priority:"Střední", figma:"F-728–F-730" }
+    ]
+  },
+  {
+    id: 31,
+    name: "Komponenty — UI Kit",
+    tasks: [
+      { id:"31.1", desc:"Navrhnout systém tlačítek — primární, sekundární, ghost, velikosti", priority:"Vysoká", figma:"F-731–F-737" },
+      { id:"31.2", desc:"Navrhnout input komponenty — text, select, checkbox, radio", priority:"Vysoká", figma:"F-738–F-744" },
+      { id:"31.3", desc:"Navrhnout card komponenty — produkt, blog, promo", priority:"Vysoká", figma:"F-745–F-750" },
+      { id:"31.4", desc:"Navrhnout badge a tag systém", priority:"Střední", figma:"F-751–F-754" },
+      { id:"31.5", desc:"Navrhnout tooltip a popover komponenty", priority:"Nízká", figma:"F-755–F-757" },
+      { id:"31.6", desc:"Dokumentovat spacing scale (4px grid)", priority:"Vysoká", figma:"F-758–F-761" },
+      { id:"31.7", desc:"Navrhnout color palette s primary, secondary, neutral, semantic", priority:"Vysoká", figma:"F-762–F-768" }
+    ]
+  },
+  {
+    id: 32,
+    name: "Handoff a implementační pokyny",
+    tasks: [
+      { id:"32.1", desc:"Připravit developer handoff — specifikace, spacing, barvy", priority:"Vysoká", figma:"F-769–F-774" },
+      { id:"32.2", desc:"Vytvořit Shoptet-specific implementační poznámky", priority:"Vysoká", figma:"F-775–F-779" },
+      { id:"32.3", desc:"Připravit QA checklist pro každou stránku", priority:"Střední", figma:"F-780–F-783" },
+      { id:"32.4", desc:"Navrhnout A/B test plán pro klíčové změny", priority:"Střední", figma:"F-784–F-787" },
+      { id:"32.5", desc:"Připravit prioritizaci implementace — co nejdřív, co později", priority:"Vysoká", figma:"F-788–F-792" },
+      { id:"32.6", desc:"Dokumentovat design decisions a rationale", priority:"Střední", figma:"F-793–F-796" },
+      { id:"32.7", desc:"Připravit timeline implementace po fázích (MVP, v2, v3)", priority:"Vysoká", figma:"F-797–F-800" }
+    ]
+  }
+];
+
+function getPriorityClass(priority) {
+  const map = {
+    'Kritická': 'kriticka',
+    'Velmi vysoká': 'velmi-vysoka',
+    'Vysoká': 'vysoka',
+    'Střední': 'stredni',
+    'Nízká': 'nizka'
+  };
+  return map[priority] || 'stredni';
+}
+
+// Count total tasks
+let totalTasks = 0;
+sections.forEach(s => totalTasks += s.tasks.length);
+
+// Build TOC
+const tocGrid = document.getElementById('tocGrid');
+sections.forEach(s => {
+  const card = document.createElement('a');
+  card.className = 'toc-card';
+  card.href = '#section-' + s.id;
+  card.innerHTML = `
+    <div class="toc-num">${s.id}</div>
+    <div class="toc-info">
+      <div class="name">${s.name}</div>
+      <div class="count">${s.tasks.length} úloh</div>
+    </div>
+  `;
+  card.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.getElementById('section-' + s.id);
+    if (target) {
+      // Open the section
+      const header = target.querySelector('.section-header');
+      const body = target.querySelector('.section-body');
+      if (!header.classList.contains('open')) {
+        header.classList.add('open');
+        body.classList.add('open');
+      }
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+  tocGrid.appendChild(card);
+});
+
+// Build Sections
+const container = document.getElementById('sectionsContainer');
+sections.forEach((s, idx) => {
+  const block = document.createElement('div');
+  block.className = 'section-block';
+  block.id = 'section-' + s.id;
+
+  const isOpen = s.id === 1;
+
+  let tasksHTML = '';
+  s.tasks.forEach(t => {
+    tasksHTML += `
+      <div class="task">
+        <div class="task-id">${t.id}</div>
+        <div class="task-content">
+          <div class="task-desc">${t.desc}</div>
+          <div class="task-meta">
+            <span class="badge ${getPriorityClass(t.priority)}">${t.priority}</span>
+            ${t.figma ? '<span class="figma-ref">Figma: ' + t.figma + '</span>' : ''}
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  block.innerHTML = `
+    <div class="section-header${isOpen ? ' open' : ''}">
+      <div class="section-num">${s.id}</div>
+      <div class="section-title">${s.name}</div>
+      <div class="section-count">${s.tasks.length} úloh</div>
+      ${arrowSVG}
+    </div>
+    <div class="section-body${isOpen ? ' open' : ''}">
+      ${tasksHTML}
+    </div>
+  `;
+
+  container.appendChild(block);
+
+  // Accordion toggle
+  const header = block.querySelector('.section-header');
+  const body = block.querySelector('.section-body');
+  header.addEventListener('click', () => {
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+    updateProgress();
+  });
+});
+
+// Progress indicator
+function updateProgress() {
+  const openSections = document.querySelectorAll('.section-body.open');
+  let visibleTasks = 0;
+  openSections.forEach(body => {
+    visibleTasks += body.querySelectorAll('.task').length;
+  });
+  const pct = Math.round((visibleTasks / totalTasks) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressCount').textContent = visibleTasks + ' of ' + totalTasks + ' tasks';
+}
+
+updateProgress();
+</script>
+
+</body>
+</html>
