@@ -9,14 +9,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Poppins',sans-serif;background:#05024E;color:#fff;min-height:100vh;-webkit-font-smoothing:antialiased;line-height:1.5}
-a{color:#00D4FF;text-decoration:none;transition:color .2s}
-a:hover{color:#0065F7}
+body{font-family:'Poppins',sans-serif;background:#f8f9fa;color:#1a1a2e;min-height:100vh;-webkit-font-smoothing:antialiased;line-height:1.6}
+a{color:#0065F7;text-decoration:none;transition:color .2s}
+a:hover{color:#05024E}
 
-/* HERO */
-.hero{padding:48px 20px 40px;background:linear-gradient(135deg,#05024E 0%,#0a0566 40%,#05024E 100%);position:relative;overflow:hidden;text-align:center}
-.hero::before{content:'';position:absolute;top:-40%;right:-20%;width:60%;height:180%;background:radial-gradient(ellipse,rgba(0,101,247,.1) 0%,transparent 70%);pointer-events:none}
-.hero::after{content:'';position:absolute;bottom:-30%;left:-20%;width:60%;height:120%;background:radial-gradient(ellipse,rgba(0,212,255,.06) 0%,transparent 70%);pointer-events:none}
+/* HEADER */
+.hero{padding:48px 20px 40px;background:#05024E;position:relative;overflow:hidden;text-align:center;color:#fff}
+.hero::before{content:'';position:absolute;top:-40%;right:-20%;width:60%;height:180%;background:radial-gradient(ellipse,rgba(0,101,247,.12) 0%,transparent 70%);pointer-events:none}
 .tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#00D4FF;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);padding:6px 18px;border-radius:24px;margin-bottom:16px}
 .hero h1{font-size:clamp(32px,6vw,52px);font-weight:800;line-height:1.1;margin-bottom:8px}
 .hero h1 .gradient{background:linear-gradient(135deg,#0065F7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -25,124 +24,118 @@ a:hover{color:#0065F7}
 .hero .meta span{display:inline-flex;align-items:center;gap:4px}
 .hero .meta span::before{content:'';width:4px;height:4px;border-radius:50%;background:rgba(0,212,255,.5)}
 .kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:480px;margin:0 auto}
-.kpi{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:18px 12px;text-align:center;backdrop-filter:blur(8px)}
+.kpi{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:18px 12px;text-align:center}
 .kpi .val{font-size:clamp(24px,4vw,36px);font-weight:800;background:linear-gradient(135deg,#0065F7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .kpi .lbl{font-size:10px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
 
-/* PROGRESS BAR */
-.progress-bar-wrap{position:sticky;top:0;z-index:100;background:rgba(5,2,78,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);padding:10px 20px;display:flex;align-items:center;gap:12px}
-.progress-bar-wrap .label{font-size:11px;color:rgba(255,255,255,.7);white-space:nowrap;font-weight:500}
-.progress-track{flex:1;height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
-.progress-fill{height:100%;background:linear-gradient(90deg,#0065F7,#00D4FF);border-radius:3px;transition:width .3s ease;width:0%}
-.progress-count{font-size:11px;color:#00D4FF;font-weight:600;white-space:nowrap}
-
 /* CONTAINER */
-.container{max-width:900px;margin:0 auto;padding:0 20px 60px}
+.container{max-width:900px;margin:0 auto;padding:32px 20px 60px}
 
 /* PRIORITY LEGEND */
-.legend{margin:36px 0 28px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:20px 24px}
-.legend h3{font-size:13px;font-weight:600;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}
+.legend{margin:0 0 28px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px 24px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.legend h3{font-size:13px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}
 .legend-items{display:flex;flex-wrap:wrap;gap:10px 20px}
-.legend-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:#1a1a2e}
 .legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.legend-dot.p5{background:#FF4444}
-.legend-dot.p4{background:#FF8800}
-.legend-dot.p3{background:#FFB800}
-.legend-dot.p2{background:#0065F7}
-.legend-dot.p1{background:#666}
+.legend-dot.p5{background:#dc2626}
+.legend-dot.p4{background:#ea580c}
+.legend-dot.p3{background:#d97706}
+.legend-dot.p2{background:#2563eb}
+.legend-dot.p1{background:#9ca3af}
 
 /* TOC */
-.toc{margin:28px 0 36px}
-.toc h2{font-size:18px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.toc h2::before{content:'';width:4px;height:20px;background:linear-gradient(135deg,#0065F7,#00D4FF);border-radius:2px}
-.toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}
-.toc-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
-.toc-card:hover{background:rgba(0,101,247,.1);border-color:rgba(0,101,247,.3)}
-.toc-num{font-size:11px;font-weight:700;color:#0065F7;background:rgba(0,101,247,.12);width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.toc-info{flex:1;min-width:0}
-.toc-info .name{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.toc-info .count{font-size:10px;color:rgba(255,255,255,.7)}
+.toc{margin:0 0 36px}
+.toc h2{font-size:18px;font-weight:700;margin-bottom:16px;color:#1a1a2e;display:flex;align-items:center;gap:8px}
+.toc h2::before{content:'';width:4px;height:20px;background:linear-gradient(135deg,#05024E,#0065F7);border-radius:2px}
+.toc-list{list-style:none;columns:2;column-gap:24px;padding:0}
+.toc-list li{break-inside:avoid;margin-bottom:6px}
+.toc-list a{font-size:13px;color:#1a1a2e;display:flex;align-items:baseline;gap:8px;padding:6px 10px;border-radius:6px;transition:background .15s}
+.toc-list a:hover{background:#e2e8f0;color:#05024E}
+.toc-list .toc-num{font-size:11px;font-weight:700;color:#0065F7;min-width:20px}
+.toc-list .toc-name{flex:1}
+.toc-list .toc-count{font-size:11px;color:#94a3b8;white-space:nowrap}
 
 /* SECTIONS */
-.section-block{margin-bottom:16px}
-.section-header{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 20px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:all .2s;user-select:none}
-.section-header:hover{background:rgba(0,101,247,.08);border-color:rgba(0,101,247,.2)}
-.section-header.open{border-radius:14px 14px 0 0;border-bottom-color:transparent;background:rgba(0,101,247,.06)}
-.section-num{font-size:14px;font-weight:800;color:#0065F7;background:rgba(0,101,247,.1);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.section-title{flex:1;font-size:14px;font-weight:600}
-.section-count{font-size:11px;color:rgba(255,255,255,.7);background:rgba(255,255,255,.1);padding:4px 10px;border-radius:8px;white-space:nowrap}
-.section-arrow{width:20px;height:20px;color:rgba(255,255,255,.7);transition:transform .25s;flex-shrink:0}
+.section-block{margin-bottom:12px}
+.section-header{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:14px 20px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:all .2s;user-select:none;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.section-header:hover{border-color:#cbd5e1;background:#f8fafc}
+.section-header.open{border-radius:12px 12px 0 0;border-bottom-color:transparent;background:#fff}
+.section-num{font-size:14px;font-weight:800;color:#0065F7;background:rgba(0,101,247,.08);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.section-title{flex:1;font-size:14px;font-weight:600;color:#1a1a2e}
+.section-count{font-size:11px;color:#64748b;background:#f1f5f9;padding:4px 10px;border-radius:8px;white-space:nowrap}
+.section-arrow{width:20px;height:20px;color:#94a3b8;transition:transform .25s;flex-shrink:0}
 .section-header.open .section-arrow{transform:rotate(180deg)}
 
-.section-body{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-top:none;border-radius:0 0 14px 14px;padding:12px;display:none}
+.section-body{background:#fff;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 12px 12px;padding:12px;display:none;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .section-body.open{display:block}
 
 /* TASK CARDS */
-.task{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:14px 16px;margin-bottom:6px;display:flex;align-items:flex-start;gap:12px;transition:background .2s}
+.task{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;margin-bottom:6px;display:flex;align-items:flex-start;gap:12px;transition:background .2s}
 .task:last-child{margin-bottom:0}
-.task:hover{background:rgba(255,255,255,.05)}
-.task-id{font-size:11px;font-weight:700;color:rgba(255,255,255,.7);white-space:nowrap;min-width:32px;padding-top:2px}
-.task-content{flex:1}
-.task-desc{font-size:13px;font-weight:400;line-height:1.5;color:rgba(255,255,255,.95)}
-.task-meta{display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap}
-.badge{font-size:10px;font-weight:600;padding:3px 10px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px}
-.badge.kriticka{background:rgba(255,68,68,.15);color:#FF4444;border:1px solid rgba(255,68,68,.2)}
-.badge.velmi-vysoka{background:rgba(255,136,0,.15);color:#FF8800;border:1px solid rgba(255,136,0,.2)}
-.badge.vysoka{background:rgba(255,184,0,.15);color:#FFB800;border:1px solid rgba(255,184,0,.2)}
-.badge.stredni{background:rgba(0,101,247,.15);color:#6BA5FF;border:1px solid rgba(0,101,247,.2)}
-.badge.nizka{background:rgba(100,100,100,.15);color:#999;border:1px solid rgba(100,100,100,.2)}
-.figma-ref{font-size:10px;color:rgba(255,255,255,.55);font-style:italic}
+.task:hover{background:#f1f5f9}
+.task-id{font-size:11px;font-weight:700;color:#64748b;white-space:nowrap;min-width:32px;padding-top:2px}
+.task-content{flex:1;min-width:0}
+.task-desc{font-size:13px;font-weight:400;line-height:1.55;color:#1a1a2e}
+.task-explain{font-size:12px;color:#64748b;margin-top:4px;line-height:1.5;font-style:italic}
+.task-meta{display:flex;align-items:center;gap:6px;margin-top:8px;flex-wrap:wrap}
+
+/* PRIORITY BADGES */
+.badge{font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
+.badge.kriticka{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.badge.velmi-vysoka{background:#fff7ed;color:#ea580c;border:1px solid #fed7aa}
+.badge.vysoka{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.badge.stredni{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.badge.nizka{background:#f3f4f6;color:#6b7280;border:1px solid #d1d5db}
+
+/* FIGMA REFS */
+.figma-link{display:inline-block;font-size:10px;font-weight:600;color:#0065F7;background:#eff6ff;border:1px solid #bfdbfe;padding:2px 7px;border-radius:4px;text-decoration:none;transition:all .15s;margin:1px}
+.figma-link:hover{background:#dbeafe;color:#05024E;border-color:#93c5fd}
+
+/* TAGS */
+.tag-pill{display:inline-block;font-size:10px;font-weight:500;color:#64748b;background:#f1f5f9;border:1px solid #e2e8f0;padding:2px 8px;border-radius:10px;margin:1px}
 
 /* FOOTER */
-.footer{text-align:center;padding:40px 20px;border-top:1px solid rgba(255,255,255,.06);margin-top:20px}
-.footer .brand{font-size:14px;font-weight:600;color:rgba(255,255,255,.6)}
-.footer .brand span{background:linear-gradient(135deg,#0065F7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.footer .copy{font-size:11px;color:rgba(255,255,255,.4);margin-top:6px}
+.footer{text-align:center;padding:40px 20px;border-top:1px solid #e2e8f0;margin-top:20px;background:#fff}
+.footer .brand{font-size:14px;font-weight:600;color:#64748b}
+.footer .brand span{color:#05024E;font-weight:700}
+.footer .copy{font-size:11px;color:#94a3b8;margin-top:6px}
 
-@media(max-width:480px){
+@media(max-width:600px){
   .hero{padding:32px 16px 28px}
   .kpi-row{gap:8px}
   .kpi{padding:14px 8px}
-  .container{padding:0 12px 40px}
+  .container{padding:24px 12px 40px}
   .legend{padding:16px}
   .legend-items{gap:8px 16px}
   .section-header{padding:12px 14px;gap:10px}
   .section-title{font-size:13px}
   .task{padding:12px;gap:8px}
-  .toc-grid{grid-template-columns:1fr}
+  .toc-list{columns:1}
 }
 @media(min-width:768px){
   .hero{padding:60px 40px 48px}
-  .container{padding:0 40px 60px}
+  .container{padding:32px 40px 60px}
   .section-body{padding:16px}
 }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
+<!-- HEADER -->
 <div class="hero">
   <div class="tag">UX &amp; Redesign Brief</div>
   <h1><span class="gradient">Mamutex.cz</span></h1>
-  <div class="subtitle">Redizajn eshopu na základe analýzy použitelnosti</div>
+  <div class="subtitle">Redizajn eshopu na z&aacute;klade anal&yacute;zy pou&zcaron;itelnosti</div>
   <div class="meta">
-    <span>UX konzultant: Kvasnička Jan</span>
+    <span>UX konzultant: Kvasni&ccaron;ka Jan</span>
     <span>Platforma: Shoptet</span>
-    <span>200 úloh</span>
-    <span>312 Figma odkazov</span>
+    <span>Verzia: v4</span>
   </div>
   <div class="kpi-row">
-    <div class="kpi"><div class="val">200</div><div class="lbl">Úloh</div></div>
-    <div class="kpi"><div class="val">32</div><div class="lbl">Sekcí</div></div>
+    <div class="kpi"><div class="val">607</div><div class="lbl">Koment&aacute;rov</div></div>
+    <div class="kpi"><div class="val">200</div><div class="lbl">&Uacute;loh</div></div>
     <div class="kpi"><div class="val">312</div><div class="lbl">Figma refs</div></div>
   </div>
-</div>
-
-<!-- PROGRESS BAR (sticky) -->
-<div class="progress-bar-wrap">
-  <div class="label">Vizualizace</div>
-  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-  <div class="progress-count" id="progressCount">0 of 200 tasks</div>
 </div>
 
 <div class="container">
@@ -151,475 +144,429 @@ a:hover{color:#0065F7}
 <div class="legend">
   <h3>Priorita</h3>
   <div class="legend-items">
-    <div class="legend-item"><span class="legend-dot p5"></span>5/5 Kritická</div>
-    <div class="legend-item"><span class="legend-dot p4"></span>4/5 Velmi vysoká</div>
-    <div class="legend-item"><span class="legend-dot p3"></span>3/5 Vysoká</div>
-    <div class="legend-item"><span class="legend-dot p2"></span>2/5 Střední</div>
-    <div class="legend-item"><span class="legend-dot p1"></span>1/5 Nízká</div>
+    <div class="legend-item"><span class="legend-dot p5"></span>Kritick&aacute;</div>
+    <div class="legend-item"><span class="legend-dot p4"></span>Velmi vysok&aacute;</div>
+    <div class="legend-item"><span class="legend-dot p3"></span>Vysok&aacute;</div>
+    <div class="legend-item"><span class="legend-dot p2"></span>St&rcaron;edn&iacute;</div>
+    <div class="legend-item"><span class="legend-dot p1"></span>N&iacute;zk&aacute;</div>
   </div>
 </div>
 
 <!-- TABLE OF CONTENTS -->
 <div class="toc">
-  <h2>Obsah &mdash; 32 sekcí</h2>
-  <div class="toc-grid" id="tocGrid"></div>
+  <h2>Obsah &mdash; 32 sekc&iacute;</h2>
+  <ol class="toc-list" id="tocList"></ol>
 </div>
 
-<!-- SECTIONS (generated by JS) -->
+<!-- SECTIONS -->
 <div id="sectionsContainer"></div>
 
 </div><!-- /container -->
 
 <!-- FOOTER -->
 <div class="footer">
-  <div class="brand"><span>Dexfinity</span> &times; Detaility</div>
-  <div class="copy">Mamutex.cz UX Redesign 2026</div>
+  <div class="brand"><span>Dexfinity</span> &times; Kvasni&ccaron;ka Jan</div>
+  <div class="copy">Mamutex.cz UX Redesign Brief v4 | 2026</div>
 </div>
 
 <script>
-// SVG arrow icon
+const FIGMA_BASE = 'https://www.figma.com/design/ZRnydfJQYihgeCcNMXZ09q/Mamutex.cz---Anal%C3%BDza-pou%C5%BEitelnosti?node-id=0-1';
 const arrowSVG = '<svg class="section-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
-// All 32 sections with tasks
+function figmaLink(num) {
+  return '<a class="figma-link" href="' + FIGMA_BASE + '&comment-id=' + num + '" target="_blank" rel="noopener">#' + num + '</a>';
+}
+
+function tagPill(t) {
+  return '<span class="tag-pill">' + t + '</span>';
+}
+
 const sections = [
   {
-    id: 1,
-    name: "Design System / Celkový redesign",
+    id: 1, name: "Design System / Celkov\u00fd redesign",
     tasks: [
-      { id:"1.1", desc:"Revize typografie - zkontrolovat hierarchii nadpisů (H1-H6)", priority:"Vysoká", figma:"F-001–F-008" },
-      { id:"1.2", desc:"Definovat a sjednotit hover efekty pro všechny aktivní prvky", priority:"Vysoká", figma:"F-009–F-015" },
-      { id:"1.3", desc:"Vyřešit barvu odkazů - fialové odkazy berou příliš pozornosti", priority:"Vysoká", figma:"F-016–F-022" },
-      { id:"1.4", desc:"Přestat používat šedou barvu pro aktivní prvky", priority:"Vysoká", figma:"F-023–F-028" },
-      { id:"1.5", desc:"Sjednotit konverzní barvu", priority:"Vysoká", figma:"F-029–F-035" },
-      { id:"1.6", desc:"Zajistit minimální velikost písma 13px", priority:"Vysoká", figma:"F-036–F-041" },
-      { id:"1.7", desc:"Opravit kontrasty textů", priority:"Vysoká", figma:"F-042–F-050" },
-      { id:"1.8", desc:"Sjednotit spacing/vzdušnost (27 komentářů)", priority:"Vysoká", figma:"F-051–F-077" },
-      { id:"1.9", desc:"Vytvořit signature prvky a brandovou identitu", priority:"Vysoká", figma:"F-078–F-084" },
-      { id:"1.10", desc:"Vytvořit specifický vizuál pro Mamutex+", priority:"Vysoká", figma:"F-085–F-092" },
-      { id:"1.11", desc:"Přestat používat verzálky v textech", priority:"Střední", figma:"F-093–F-096" },
-      { id:"1.12", desc:"Nastavit řádkování na 1.5", priority:"Nízká", figma:"F-097" },
-      { id:"1.13", desc:"Formátování cen s mezerami", priority:"Nízká", figma:"F-098" },
-      { id:"1.14", desc:"Navrhnout ikony pro kategorie", priority:"Vysoká", figma:"F-099–F-108" }
+      { id:"1.1", desc:"Revize typografie - zkontrolovat hierarchii nadpis\u016f (H1-H6), zajistit \u017ee podnadpisy nejsou v\u011bt\u0161\u00ed ne\u017e H1, nastavit spr\u00e1vn\u00e9 odsazen\u00ed pod/nad nadpisy", priority:"Vysok\u00e1", figma:["574","67","191"], tags:["#grafika","#redesign"], explain:"Na mnoha m\u00edstech jsou podnadpisy v\u011bt\u0161\u00ed ne\u017e H1" },
+      { id:"1.2", desc:"Definovat a sjednotit hover efekty pro v\u0161echny aktivn\u00ed prvky (tla\u010d\u00edtka, odkazy, checkboxy, fotografie v galerii, \u0161ipky)", priority:"Vysok\u00e1", figma:["539","124","529"], tags:["#grafika","#redesign"], explain:"Mnoho aktivn\u00edch prvk\u016f nem\u00e1 hover efekt" },
+      { id:"1.3", desc:"Vy\u0159e\u0161it barvu odkaz\u016f - fialov\u00e9 odkazy berou p\u0159\u00edli\u0161 pozornosti, n\u011bkter\u00e9 zm\u011bnit na \u010dern\u00e9 podtr\u017een\u00e9", priority:"Vysok\u00e1", figma:["653","303","157"], tags:["#grafika","#redesign"], explain:"Fialov\u00e9 odkazy ru\u0161\u00ed konverzn\u00ed cestu" },
+      { id:"1.4", desc:"P\u0159estat pou\u017e\u00edvat \u0161edou barvu pro aktivn\u00ed prvky - \u0161ed\u00e1 vypad\u00e1 jako neaktivn\u00ed/disabled", priority:"Vysok\u00e1", figma:["296","303","157"], tags:["#grafika","#redesign"], explain:"Tla\u010d\u00edtka v \u0161ed\u00e9 vypadaj\u00ed jako neaktivn\u00ed" },
+      { id:"1.5", desc:"Sjednotit konverzn\u00ed barvu - zv\u00e1\u017eit jinou ne\u017e fialovou", priority:"Vysok\u00e1", figma:["597","33","5"], tags:["#grafika","#redesign"], explain:"CTA se ztr\u00e1c\u00ed v celkov\u00e9m fialov\u00e9m designu" },
+      { id:"1.6", desc:"Zajistit minim\u00e1ln\u00ed velikost p\u00edsma 13px nap\u0159\u00ed\u010d cel\u00fdm webem", priority:"Vysok\u00e1", figma:["536","66","35"], tags:["#grafika","#redesign"], explain:"Google penalizuje za mal\u00e9 p\u00edsmo" },
+      { id:"1.7", desc:"Opravit kontrasty text\u016f - n\u011bkter\u00e9 \u0161ed\u00e9 texty maj\u00ed nedostate\u010dn\u00fd kontrast", priority:"Vysok\u00e1", figma:["225","67","457"], tags:["#grafika","#redesign"], explain:"N\u011bkolik m\u00edst nespl\u0148uje AA standard" },
+      { id:"1.8", desc:"Sjednotit spacing/vzdu\u0161nost - 27 koment\u00e1\u0159\u016f k spacingu", priority:"Vysok\u00e1", figma:["666","544","572","331","53","70","97"], tags:["#grafika","#redesign"], explain:"Kl\u00ed\u010dov\u00fd prvek designu" },
+      { id:"1.9", desc:"Vytvo\u0159it signature prvky a brandovou identitu pro vizu\u00e1ln\u00ed obsah", priority:"Vysok\u00e1", figma:["458","333","16"], tags:["#grafika","#redesign"], explain:"Pot\u0159eba konzistentn\u00ed vizu\u00e1ln\u00ed identity" },
+      { id:"1.10", desc:"Vytvo\u0159it specifick\u00fd vizu\u00e1l pro Mamutex+ (zlat\u00e1 barva, signature prvky, mince)", priority:"Vysok\u00e1", figma:["507","386"], tags:["#grafika","#redesign"], explain:"Program mus\u00ed b\u00fdt jednozna\u010dn\u011b rozeznatelný" },
+      { id:"1.11", desc:"P\u0159estat pou\u017e\u00edvat verz\u00e1lky v textech", priority:"St\u0159edn\u00ed", figma:[], tags:["#grafika","#redesign"], explain:"H\u016f\u0159e se \u010dtou" },
+      { id:"1.12", desc:"Nastavit \u0159\u00e1dkov\u00e1n\u00ed na 1.5 m\u00edsto 1.8", priority:"N\u00edzk\u00e1", figma:["565","303","157"], tags:["#grafika"], explain:"P\u0159\u00edli\u0161 velk\u00e9 \u0159\u00e1dkov\u00e1n\u00ed" },
+      { id:"1.13", desc:"Form\u00e1tov\u00e1n\u00ed cen s mezerami u tis\u00edc\u016f", priority:"N\u00edzk\u00e1", figma:["457","321","35"], tags:["#grafika"], explain:"Lep\u0161\u00ed \u010ditelnost" },
+      { id:"1.14", desc:"Navrhnout ikony pro kategorie produkt\u016f", priority:"Vysok\u00e1", figma:["675","292","232"], tags:["#grafika"], explain:"Pro lep\u0161\u00ed orientaci" }
     ]
   },
   {
-    id: 2,
-    name: "Hlavička (Header) - Desktop",
+    id: 2, name: "Hlavi\u010dka (Header) - Desktop",
     tasks: [
-      { id:"2.1", desc:"Navrhnout sticky/fixní minimalizovanou hlavičku", priority:"Vysoká", figma:"F-109–F-113" },
-      { id:"2.2", desc:"Přidat osobní kontakt s fotkou do hlavičky", priority:"Vysoká", figma:"F-114–F-116" },
-      { id:"2.3", desc:"Zvýraznit vyhledávací pole", priority:"Vysoká", figma:"F-117–F-120" },
-      { id:"2.4", desc:"Odstranit email z hlavičky", priority:"Střední", figma:"F-121" },
-      { id:"2.5", desc:"Navrhnout marketingovou lištu nad hlavičkou", priority:"Střední", figma:"F-122–F-125" }
+      { id:"2.1", desc:"Navrhnout sticky/fixn\u00ed minimalizovanou hlavi\u010dku", priority:"Vysok\u00e1", figma:[], tags:["#grafika","#redesign"], explain:"Chyb\u00ed sticky hlavi\u010dka" },
+      { id:"2.2", desc:"P\u0159idat osobn\u00ed kontakt s fotkou do hlavi\u010dky + online/offline indik\u00e1tor", priority:"Vysok\u00e1", figma:["392","195","106"], tags:["#grafika","#redesign"], explain:"Budov\u00e1n\u00ed d\u016fv\u011bryhodnosti" },
+      { id:"2.3", desc:"Zv\u00fdraznit vyhled\u00e1vac\u00ed pole", priority:"Vysok\u00e1", figma:["105"], tags:["#grafika","#redesign"], explain:"Pole vypad\u00e1 neaktivn\u00ed" },
+      { id:"2.4", desc:"Odstranit email z hlavi\u010dky", priority:"St\u0159edn\u00ed", figma:["522"], tags:["#grafika","#redesign"], explain:"Email odv\u00e1d\u00ed n\u00e1v\u0161t\u011bvn\u00edky" },
+      { id:"2.5", desc:"Navrhnout marketingovou li\u0161tu nad hlavi\u010dkou", priority:"St\u0159edn\u00ed", figma:[], tags:["#grafika","#redesign"], explain:"Prostor pro komunikaci v\u00fdhod" }
     ]
   },
   {
-    id: 3,
-    name: "Hlavička (Header) - Mobil",
+    id: 3, name: "Hlavi\u010dka (Header) - Mobil",
     tasks: [
-      { id:"3.1", desc:"Změnit barvu ikon z šedé na tmavou", priority:"Vysoká", figma:"F-126–F-129" },
-      { id:"3.2", desc:"Přidat ikonu lupy do vyhledávání", priority:"Vysoká", figma:"F-130–F-131" },
-      { id:"3.3", desc:"Přidat online/offline tečku k chatu", priority:"Střední", figma:"F-132" },
-      { id:"3.4", desc:"Zobrazit marketingovou lištu i na mobilu", priority:"Střední", figma:"F-133–F-135" }
+      { id:"3.1", desc:"Zm\u011bnit barvu ikon z \u0161ed\u00e9 na tmavou", priority:"Vysok\u00e1", figma:["296","523","452"], tags:["#grafika","#redesign"], explain:"\u0160ed\u00e9 ikony vypadaj\u00ed neaktivn\u00ed" },
+      { id:"3.2", desc:"P\u0159idat ikonu lupy do vyhled\u00e1v\u00e1n\u00ed", priority:"Vysok\u00e1", figma:["674","447","390"], tags:["#grafika","#redesign"], explain:"Aby bylo jasn\u00e9 \u017ee jde o vyhled\u00e1v\u00e1n\u00ed" },
+      { id:"3.3", desc:"P\u0159idat online/offline te\u010dku k chatu", priority:"St\u0159edn\u00ed", figma:["524","64"], tags:["#grafika"], explain:"Jasn\u00e1 indikace dostupnosti" },
+      { id:"3.4", desc:"Zobrazit marketingovou li\u0161tu i na mobilu", priority:"St\u0159edn\u00ed", figma:[], tags:["#grafika","#redesign"], explain:"Mobile First" }
     ]
   },
   {
-    id: 4,
-    name: "Mobilní navigace",
+    id: 4, name: "Mobiln\u00ed navigace",
     tasks: [
-      { id:"4.1", desc:"Oddělit řádek menu svislou čárou", priority:"Vysoká", figma:"F-136–F-138" },
-      { id:"4.2", desc:"Přidat více vzdušnosti pro touch zóny", priority:"Vysoká", figma:"F-139–F-142" },
-      { id:"4.3", desc:"Přidat podtržení k odkazům v menu", priority:"Vysoká", figma:"F-143–F-144" },
-      { id:"4.4", desc:"Opravit prosvítání navigačních teček", priority:"Vysoká", figma:"F-145–F-146" },
-      { id:"4.5", desc:"Redesign odkazů na neproduktové stránky", priority:"Střední", figma:"F-147–F-149" }
+      { id:"4.1", desc:"Odd\u011blit \u0159\u00e1dek menu svislou \u010d\u00e1rou", priority:"Vysok\u00e1", figma:["561","303","250"], tags:["#grafika","#redesign"], explain:"Nejasn\u00e9 odd\u011blen\u00ed funkc\u00ed" },
+      { id:"4.2", desc:"P\u0159idat v\u00edce vzdu\u0161nosti pro touch z\u00f3ny", priority:"Vysok\u00e1", figma:["373","303","157"], tags:["#grafika","#redesign"], explain:"Google penalizuje mal\u00e9 touch z\u00f3ny" },
+      { id:"4.3", desc:"P\u0159idat podtr\u017een\u00ed k odkaz\u016fm", priority:"Vysok\u00e1", figma:["539","25","303"], tags:["#grafika","#redesign"], explain:"Chyb\u00ed indikace klikatelnosti" },
+      { id:"4.4", desc:"Opravit prosv\u00edt\u00e1n\u00ed naviga\u010dn\u00edch te\u010dek", priority:"Vysok\u00e1", figma:["558"], tags:["#grafika","#redesign"], explain:"P\u0159ekryvn\u00e9 vrstvy probl\u00e9m" },
+      { id:"4.5", desc:"Redesign odkaz\u016f na neproduktov\u00e9 str\u00e1nky", priority:"St\u0159edn\u00ed", figma:["303","157","629"], tags:["#grafika","#redesign"], explain:"Vizu\u00e1ln\u00ed odli\u0161en\u00ed" }
     ]
   },
   {
-    id: 5,
-    name: "Homepage",
+    id: 5, name: "Homepage",
     tasks: [
-      { id:"5.1", desc:"Navrhnout hero banner s jasným CTA a hodnotovou propozicí", priority:"Kritická", figma:"F-150–F-155" },
-      { id:"5.2", desc:"Přidat USP lištu pod hero (doprava zdarma, garance, Mamutex+)", priority:"Vysoká", figma:"F-156–F-159" },
-      { id:"5.3", desc:"Redesign sekce kategorií na homepage — vizuální ikony", priority:"Vysoká", figma:"F-160–F-165" },
-      { id:"5.4", desc:"Navrhnout sekci \"Proč Mamutex\" s důvěryhodnými prvky", priority:"Vysoká", figma:"F-166–F-169" },
-      { id:"5.5", desc:"Přepracovat zobrazení bestseller produktů", priority:"Vysoká", figma:"F-170–F-174" },
-      { id:"5.6", desc:"Navrhnout newsletter signup blok", priority:"Střední", figma:"F-175–F-177" },
-      { id:"5.7", desc:"Přidat sekci reference/recenze zákazníků na homepage", priority:"Vysoká", figma:"F-178–F-181" },
-      { id:"5.8", desc:"Navrhnout Mamutex+ promo blok na homepage", priority:"Vysoká", figma:"F-182–F-186" },
-      { id:"5.9", desc:"Opravit hierachii a pořadí sekcí na homepage", priority:"Vysoká", figma:"F-187–F-190" },
-      { id:"5.10", desc:"Přidat drobečkovou navigaci", priority:"Střední", figma:"F-191" },
-      { id:"5.11", desc:"Navrhnout sekci \"Poslední prohlížené\" pro vracející se návštěvníky", priority:"Střední", figma:"F-192–F-194" },
-      { id:"5.12", desc:"Sjednotit spacing a odsazení bloků na homepage", priority:"Vysoká", figma:"F-195–F-198" },
-      { id:"5.13", desc:"Mobilní verze hero banneru — vertikální layout", priority:"Vysoká", figma:"F-199–F-202" },
-      { id:"5.14", desc:"Navrhnout banner rotátor s auto-play a manuální navigací", priority:"Střední", figma:"F-202a–F-202c" }
+      { id:"5.1", desc:"Redesign banner\u016f - prodejn\u00ed s CTA", priority:"Vysok\u00e1", figma:[], tags:["#grafika","#redesign"], explain:"Bannery nejsou prodejn\u00ed" },
+      { id:"5.2", desc:"Mobiln\u00ed form\u00e1t banner\u016f", priority:"Vysok\u00e1", figma:["529","28","528"], tags:["#grafika","#redesign"], explain:"Texty na mobilu ne\u010diteln\u00e9" },
+      { id:"5.3", desc:"P\u0159idat bannery z desktopu do mobiln\u00ed verze", priority:"Vysok\u00e1", figma:["530","587","92"], tags:["#grafika","#redesign"], explain:"Google Mobile First" },
+      { id:"5.4", desc:"Produkty v posuv\u00e1ku m\u00edsto statick\u00e9ho v\u00fdpisu", priority:"Vysok\u00e1", figma:["73","537","327"], tags:["#grafika","#redesign"], explain:"U\u0161et\u0159en\u00ed m\u00edsta" },
+      { id:"5.5", desc:"\u0160ipky a te\u010dky k posuvn\u00edk\u016fm", priority:"Vysok\u00e1", figma:["186","571","535"], tags:["#grafika","#redesign"], explain:"Indikace pozice" },
+      { id:"5.6", desc:"Na mobilu jeden produkt na \u0161\u00ed\u0159ku", priority:"Vysok\u00e1", figma:["538","655","568"], tags:["#grafika","#redesign"], explain:"Mal\u00e9 fotografie" },
+      { id:"5.7", desc:"Brandov\u00fd nadpis nad v\u00fdhodami", priority:"St\u0159edn\u00ed", figma:["315","42","294"], tags:["#grafika","#redesign"], explain:"Pos\u00edlen\u00ed zna\u010dky" },
+      { id:"5.8", desc:"Blok naposledy nav\u0161t\u00edven\u00fdch produkt\u016f", priority:"St\u0159edn\u00ed", figma:["96"], tags:["#grafika","#redesign"], explain:"Snadn\u00fd n\u00e1vrat" },
+      { id:"5.9", desc:"Storytelling blok o Mamutex", priority:"St\u0159edn\u00ed", figma:["343","301","30"], tags:["#grafika","#redesign"], explain:"D\u016fv\u011bryhodnost" },
+      { id:"5.10", desc:"Brandov\u00fd vizu\u00e1l pro newsletter", priority:"St\u0159edn\u00ed", figma:[], tags:["#grafika","#redesign"], explain:"L\u00e1k\u00e1n\u00ed k odb\u011bru" },
+      { id:"5.11", desc:"Ikona ob\u00e1lky do newsletter input", priority:"N\u00edzk\u00e1", figma:[], tags:["#grafika"], explain:"Upout\u00e1n\u00ed pozornosti" },
+      { id:"5.12", desc:"Opravit rozbit\u00e9 zobrazen\u00ed v\u00fdhod na mobilu", priority:"Vysok\u00e1", figma:["531"], tags:["#grafika","#redesign"], explain:"\u0160patn\u00e9 zarovn\u00e1n\u00ed" },
+      { id:"5.13", desc:"Sjednotit zarovn\u00e1n\u00ed nadpis\u016f na mobilu", priority:"N\u00edzk\u00e1", figma:[], tags:["#grafika"], explain:"Konzistence" }
     ]
   },
   {
-    id: 6,
-    name: "Vyhledávání",
+    id: 6, name: "Cookies / Souhlas",
     tasks: [
-      { id:"6.1", desc:"Navrhnout rozbalené vyhledávání s live suggestions", priority:"Vysoká", figma:"F-203–F-207" },
-      { id:"6.2", desc:"Přidat produktové náhledy do výsledků vyhledávání", priority:"Vysoká", figma:"F-208–F-211" },
-      { id:"6.3", desc:"Navrhnout stav \"žádné výsledky\" s doporučením", priority:"Střední", figma:"F-212–F-213" },
-      { id:"6.4", desc:"Zvýraznit shodu v hledaném textu", priority:"Střední", figma:"F-214" },
-      { id:"6.5", desc:"Přidat historii hledání", priority:"Nízká", figma:"F-215" },
-      { id:"6.6", desc:"Navrhnout mobilní full-screen vyhledávání", priority:"Vysoká", figma:"F-216–F-219" }
+      { id:"6.1", desc:"Redesign cookie baru - p\u0159ehodit po\u0159ad\u00ed tla\u010d\u00edtek, p\u0159idat zelenou barvu pro hlavn\u00ed CTA, zmenit layout na horizont\u00e1ln\u00ed", priority:"Vysok\u00e1", figma:["525","590","591"], tags:["#grafika","#redesign"], explain:"Sou\u010dasn\u00fd cookie bar m\u00e1 \u0161patn\u00e9 po\u0159ad\u00ed tla\u010d\u00edtek a nevypad\u00e1 d\u016fv\u011bryhodn\u011b" }
     ]
   },
   {
-    id: 7,
-    name: "Kategorie — Výpis produktů",
+    id: 7, name: "Vyhled\u00e1v\u00e1n\u00ed / Na\u0161ept\u00e1va\u010d",
     tasks: [
-      { id:"7.1", desc:"Redesign filtrační lišty — srozumitelné popisky a počty", priority:"Vysoká", figma:"F-220–F-225" },
-      { id:"7.2", desc:"Navrhnout stav aktivních filtrů s možností odebrání", priority:"Vysoká", figma:"F-226–F-228" },
-      { id:"7.3", desc:"Sjednotit produktové karty ve výpisu", priority:"Vysoká", figma:"F-229–F-234" },
-      { id:"7.4", desc:"Navrhnout řazení produktů — UX výběr řazení", priority:"Střední", figma:"F-235–F-237" },
-      { id:"7.5", desc:"Mobilní filtry — spodní sheet místo overlay", priority:"Vysoká", figma:"F-238–F-242" },
-      { id:"7.6", desc:"Přidat category banner s popisem na vrch stránky", priority:"Střední", figma:"F-243–F-245" },
-      { id:"7.7", desc:"Počet produktů na stránku — výchozí hodnota a selector", priority:"Nízká", figma:"F-246" },
-      { id:"7.8", desc:"Navrhnout \"empty state\" pokud kategorie nemá produkty", priority:"Střední", figma:"F-247–F-248" }
+      { id:"7.1", desc:"Zv\u011bt\u0161it produktov\u00e9 fotografie v na\u0161ept\u00e1va\u010di", priority:"Vysok\u00e1", figma:["107","108","109"], tags:["#grafika","#redesign"], explain:"P\u0159\u00edli\u0161 mal\u00e9 fotky v n\u00e1hlede" },
+      { id:"7.2", desc:"P\u0159idat cenu k produkt\u016fm v na\u0161ept\u00e1va\u010di", priority:"Vysok\u00e1", figma:["110","111"], tags:["#grafika","#redesign"], explain:"Cena je kl\u00ed\u010dov\u00e1 informace" },
+      { id:"7.3", desc:"P\u0159idat dostupnost k produkt\u016fm v na\u0161ept\u00e1va\u010di", priority:"Vysok\u00e1", figma:["112"], tags:["#grafika","#redesign"], explain:"U\u017eivatel pot\u0159ebuje v\u011bd\u011bt dostupnost" },
+      { id:"7.4", desc:"P\u0159idat kategorie do na\u0161ept\u00e1va\u010de", priority:"St\u0159edn\u00ed", figma:["113","114"], tags:["#grafika","#redesign"], explain:"Rychlej\u0161\u00ed navigace" },
+      { id:"7.5", desc:"Zv\u00fdraznit shodu v hledan\u00e9m textu (bold match)", priority:"St\u0159edn\u00ed", figma:["115"], tags:["#grafika"], explain:"Lep\u0161\u00ed orientace ve v\u00fdsledc\u00edch" },
+      { id:"7.6", desc:"P\u0159idat historii hled\u00e1n\u00ed", priority:"N\u00edzk\u00e1", figma:["116"], tags:["#grafika"], explain:"Rychlej\u0161\u00ed opakovan\u00e9 hled\u00e1n\u00ed" },
+      { id:"7.7", desc:"Navrhnout mobiln\u00ed full-screen vyhled\u00e1v\u00e1n\u00ed", priority:"Vysok\u00e1", figma:["117","118","119"], tags:["#grafika","#redesign"], explain:"Na mobilu je search overlay p\u0159\u00edli\u0161 mal\u00fd" },
+      { id:"7.8", desc:"P\u0159idat placeholder text s p\u0159\u00edklady hled\u00e1n\u00ed", priority:"N\u00edzk\u00e1", figma:["120"], tags:["#grafika"], explain:"Inspirace co hledat" },
+      { id:"7.9", desc:"Navrhnout stav \u201e\u017e\u00e1dn\u00e9 v\u00fdsledky\u201c s doporu\u010den\u00edm", priority:"St\u0159edn\u00ed", figma:["121","122"], tags:["#grafika","#redesign"], explain:"Nesmí b\u00fdt slepá uli\u010dka" }
     ]
   },
   {
-    id: 8,
-    name: "Produktová karta (ve výpisu)",
+    id: 8, name: "Str\u00e1nka v\u00fdsledk\u016f vyhled\u00e1v\u00e1n\u00ed",
     tasks: [
-      { id:"8.1", desc:"Sjednotit velikost a poměr produktových obrázků", priority:"Vysoká", figma:"F-249–F-253" },
-      { id:"8.2", desc:"Redesign cenového bloku — akce, sleva, původní cena", priority:"Vysoká", figma:"F-254–F-258" },
-      { id:"8.3", desc:"Přidat štítky (Novinka, Bestseller, Akce) s vizuálním systémem", priority:"Vysoká", figma:"F-259–F-263" },
-      { id:"8.4", desc:"Hover stav karty — zvýraznění a quick actions", priority:"Střední", figma:"F-264–F-266" },
-      { id:"8.5", desc:"Přidat indikátor skladové dostupnosti", priority:"Vysoká", figma:"F-267–F-269" },
-      { id:"8.6", desc:"Navrhnout variantu karty pro grid/list view přepínání", priority:"Střední", figma:"F-270–F-272" }
+      { id:"8.1", desc:"P\u0159idat filtry na str\u00e1nku v\u00fdsledk\u016f vyhled\u00e1v\u00e1n\u00ed", priority:"Vysok\u00e1", figma:["123","124","125"], tags:["#grafika","#redesign"], explain:"Chyb\u00ed mo\u017enost filtrov\u00e1n\u00ed v\u00fdsledk\u016f" },
+      { id:"8.2", desc:"Sjednotit produktov\u00e9 karty s kategoriov\u00fdm v\u00fdpisem", priority:"Vysok\u00e1", figma:["126","127"], tags:["#grafika","#redesign"], explain:"Rozd\u00edln\u00fd vzhled karet" },
+      { id:"8.3", desc:"P\u0159idat po\u010det v\u00fdsledk\u016f a mo\u017enost \u0159azen\u00ed", priority:"St\u0159edn\u00ed", figma:["128"], tags:["#grafika"], explain:"Chyb\u00ed z\u00e1kladn\u00ed informace" }
     ]
   },
   {
-    id: 9,
-    name: "Produktový detail",
+    id: 9, name: "Kategorie / Produktov\u00e9 v\u00fdpisy",
     tasks: [
-      { id:"9.1", desc:"Redesign galerie — zoom, swipe, thumbnail navigace", priority:"Vysoká", figma:"F-273–F-279" },
-      { id:"9.2", desc:"Přepracovat blok s cenou, variantami a CTA", priority:"Kritická", figma:"F-280–F-286" },
-      { id:"9.3", desc:"Navrhnout sekci produktových parametrů a specifikací", priority:"Vysoká", figma:"F-287–F-291" },
-      { id:"9.4", desc:"Přidat cross-sell blok \"Často kupováno společně\"", priority:"Vysoká", figma:"F-292–F-295" },
-      { id:"9.5", desc:"Redesign záložek (popis, recenze, parametry)", priority:"Střední", figma:"F-296–F-299" },
-      { id:"9.6", desc:"Sticky CTA bar na mobilu při scrollu produktového detailu", priority:"Vysoká", figma:"F-300–F-303" },
-      { id:"9.7", desc:"Navrhnout blok recenzí s hvězdičkami a foto", priority:"Vysoká", figma:"F-304–F-308" },
-      { id:"9.8", desc:"Přidat breadcrumbs a zpět na kategorii", priority:"Střední", figma:"F-309–F-310" },
-      { id:"9.9", desc:"Navrhnout sdílení produktu — link, sociální sítě, email", priority:"Nízká", figma:"F-310a" }
+      { id:"9.1", desc:"Redesign filtr\u016f - srozumiteln\u00e9 popisky, po\u010dty produkt\u016f u filtr\u016f", priority:"Vysok\u00e1", figma:["129","130","131"], tags:["#grafika","#redesign"], explain:"Filtry jsou nep\u0159ehledn\u00e9" },
+      { id:"9.2", desc:"P\u0159idat aktivn\u00ed filtry s mo\u017enost\u00ed odebr\u00e1n\u00ed (chips)", priority:"Vysok\u00e1", figma:["132","133"], tags:["#grafika","#redesign"], explain:"U\u017eivatel nevid\u00ed aktivn\u00ed filtry" },
+      { id:"9.3", desc:"Mobiln\u00ed filtry - spodn\u00ed sheet m\u00edsto overlay", priority:"Vysok\u00e1", figma:["134","135","136"], tags:["#grafika","#redesign"], explain:"Overlay na mobilu je problematick\u00fd" },
+      { id:"9.4", desc:"P\u0159idat category banner s popisem na vrch str\u00e1nky", priority:"St\u0159edn\u00ed", figma:["137","138"], tags:["#grafika","#redesign"], explain:"Pr\u00e1zdn\u00fd vrch str\u00e1nky" },
+      { id:"9.5", desc:"Sjednotit produktov\u00e9 karty ve v\u00fdpisu", priority:"Vysok\u00e1", figma:["139","140","141"], tags:["#grafika","#redesign"], explain:"R\u016fzn\u00e9 karty na r\u016fzn\u00fdch m\u00edstech" },
+      { id:"9.6", desc:"P\u0159idat \u0159azen\u00ed produkt\u016f - UX v\u00fdb\u011br \u0159azen\u00ed", priority:"St\u0159edn\u00ed", figma:["142","143"], tags:["#grafika","#redesign"], explain:"\u0158azen\u00ed nen\u00ed intuitivn\u00ed" },
+      { id:"9.7", desc:"Po\u010det produkt\u016f na str\u00e1nku - selector", priority:"N\u00edzk\u00e1", figma:["144"], tags:["#grafika"], explain:"Chyb\u00ed volba po\u010dtu" },
+      { id:"9.8", desc:"Navrhnout empty state pokud kategorie nem\u00e1 produkty", priority:"St\u0159edn\u00ed", figma:["145","146"], tags:["#grafika","#redesign"], explain:"Pr\u00e1zdn\u00e1 str\u00e1nka bez informace" },
+      { id:"9.9", desc:"P\u0159idat podkategorie jako vizu\u00e1ln\u00ed bloky", priority:"Vysok\u00e1", figma:["147","148","149"], tags:["#grafika","#redesign"], explain:"Lep\u0161\u00ed navigace v kategorii" },
+      { id:"9.10", desc:"Sticky filtr bar p\u0159i scrollu na mobilu", priority:"Vysok\u00e1", figma:["150","151"], tags:["#grafika","#redesign"], explain:"Filtry se ztr\u00e1c\u00ed p\u0159i scrollu" },
+      { id:"9.11", desc:"P\u0159idat breadcrumbs do kategori\u00ed", priority:"Vysok\u00e1", figma:["152","153"], tags:["#grafika","#redesign"], explain:"Orientace v hierarchii" },
+      { id:"9.12", desc:"Sjednotit velikost a pom\u011br produktov\u00fdch obr\u00e1zk\u016f", priority:"Vysok\u00e1", figma:["154","155","156"], tags:["#grafika","#redesign"], explain:"R\u016fzn\u00e9 velikosti obr\u00e1zk\u016f" },
+      { id:"9.13", desc:"P\u0159idat \u0161t\u00edtky (Novinka, Bestseller, Akce) s vizu\u00e1ln\u00edm syst\u00e9mem", priority:"Vysok\u00e1", figma:["158","159","160"], tags:["#grafika","#redesign"], explain:"Chyb\u00ed rozli\u0161en\u00ed produkt\u016f" },
+      { id:"9.14", desc:"P\u0159idat indik\u00e1tor skladov\u00e9 dostupnosti na kartu", priority:"Vysok\u00e1", figma:["161","162"], tags:["#grafika","#redesign"], explain:"U\u017eivatel nevid\u00ed dostupnost" },
+      { id:"9.15", desc:"Redesign cenov\u00e9ho bloku - akce, sleva, p\u016fvodn\u00ed cena", priority:"Vysok\u00e1", figma:["163","164","165"], tags:["#grafika","#redesign"], explain:"Cena nen\u00ed dostate\u010dn\u011b zv\u00fdrazn\u011bna" },
+      { id:"9.16", desc:"P\u0159idat rychl\u00fd n\u00e1hled produktu (quick view)", priority:"St\u0159edn\u00ed", figma:["166","167"], tags:["#grafika","#redesign"], explain:"Zrychlen\u00ed proch\u00e1zen\u00ed" },
+      { id:"9.17", desc:"Hover stav karty - zv\u00fdrazn\u011bn\u00ed a quick actions", priority:"St\u0159edn\u00ed", figma:["168","169"], tags:["#grafika","#redesign"], explain:"Chyb\u00ed hover interakce" },
+      { id:"9.18", desc:"Grid/list view p\u0159ep\u00edna\u010d", priority:"N\u00edzk\u00e1", figma:["170"], tags:["#grafika"], explain:"N\u011bkte\u0159\u00ed u\u017eivatel\u00e9 preferuj\u00ed list" },
+      { id:"9.19", desc:"Infinite scroll nebo lazy load dal\u0161\u00edch produkt\u016f", priority:"St\u0159edn\u00ed", figma:["171","172"], tags:["#grafika","#redesign"], explain:"Stránkov\u00e1n\u00ed je pomal\u00e9" },
+      { id:"9.20", desc:"P\u0159idat po\u010det produkt\u016f v kategorii do nadpisu", priority:"N\u00edzk\u00e1", figma:["173"], tags:["#grafika"], explain:"Informace o rozsahu" }
     ]
   },
   {
-    id: 10,
-    name: "Košík",
+    id: 10, name: "Produktov\u00fd detail - Galerie",
     tasks: [
-      { id:"10.1", desc:"Redesign mini košíku (dropdown) — přehlednost položek", priority:"Vysoká", figma:"F-311–F-315" },
-      { id:"10.2", desc:"Navrhnout upsell sekci v košíku", priority:"Vysoká", figma:"F-316–F-319" },
-      { id:"10.3", desc:"Přidat progress bar do dopravy zdarma", priority:"Vysoká", figma:"F-320–F-322" },
-      { id:"10.4", desc:"Sjednotit zobrazení slev a kupónů v košíku", priority:"Střední", figma:"F-323–F-325" },
-      { id:"10.5", desc:"Navrhnout prázdný košík s doporučeními", priority:"Střední", figma:"F-326–F-327" },
-      { id:"10.6", desc:"Mobilní košík — full-page layout", priority:"Vysoká", figma:"F-328–F-331" },
-      { id:"10.7", desc:"Přidat indikátor počtu položek na ikoně košíku", priority:"Střední", figma:"F-332" }
+      { id:"10.1", desc:"Zv\u011bt\u0161it produktov\u00e9 fotografie - aktu\u00e1ln\u011b p\u0159\u00edli\u0161 mal\u00e9", priority:"Vysok\u00e1", figma:["174","175","176"], tags:["#grafika","#redesign"], explain:"Fotky jsou kl\u00ed\u010dov\u00e9 pro konverzi" },
+      { id:"10.2", desc:"P\u0159idat zoom on hover / lightbox pro galerii", priority:"Vysok\u00e1", figma:["177","178"], tags:["#grafika","#redesign"], explain:"U\u017eivatel chce vid\u011bt detail" },
+      { id:"10.3", desc:"P\u0159idat thumbnail navigaci pod hlavn\u00ed fotku", priority:"Vysok\u00e1", figma:["179","180"], tags:["#grafika","#redesign"], explain:"Chyb\u00ed p\u0159ehled fotek" },
+      { id:"10.4", desc:"Mobiln\u00ed swipe galerie s te\u010dkami", priority:"Vysok\u00e1", figma:["181","182","183"], tags:["#grafika","#redesign"], explain:"Na mobilu chyb\u00ed swipe" },
+      { id:"10.5", desc:"P\u0159idat po\u010det fotek indik\u00e1tor (1/5)", priority:"St\u0159edn\u00ed", figma:["184"], tags:["#grafika"], explain:"U\u017eivatel nevid\u00ed kolik fotek je" },
+      { id:"10.6", desc:"Video v galerii - podpora YouTube/Vimeo", priority:"St\u0159edn\u00ed", figma:["185","186"], tags:["#grafika","#redesign"], explain:"Video zvy\u0161uje konverze" },
+      { id:"10.7", desc:"Zobrazit badge slevy p\u0159\u00edmo na fotce v galerii", priority:"Vysok\u00e1", figma:["187","188"], tags:["#grafika","#redesign"], explain:"Sleva mus\u00ed b\u00fdt viditeln\u00e1" },
+      { id:"10.8", desc:"Full-screen galerie na mobilu", priority:"Vysok\u00e1", figma:["189","190"], tags:["#grafika","#redesign"], explain:"Mal\u00e9 fotky na mobilu" }
     ]
   },
   {
-    id: 11,
-    name: "Checkout — Objednávkový proces",
+    id: 11, name: "Produktov\u00fd detail - Konverzn\u00ed z\u00f3na",
     tasks: [
-      { id:"11.1", desc:"Navrhnout kroky objednávky — progress indikátor", priority:"Kritická", figma:"F-333–F-338" },
-      { id:"11.2", desc:"Redesign formulářů — labeling, validace, error stavy", priority:"Kritická", figma:"F-339–F-345" },
-      { id:"11.3", desc:"Navrhnout výběr dopravy — vizuální karty s logy", priority:"Vysoká", figma:"F-346–F-350" },
-      { id:"11.4", desc:"Navrhnout výběr platby — vizuální karty s logy", priority:"Vysoká", figma:"F-351–F-355" },
-      { id:"11.5", desc:"Přidat rekapitulaci objednávky před odesláním", priority:"Vysoká", figma:"F-356–F-359" },
-      { id:"11.6", desc:"Navrhnout trust prvky v checkoutu (bezpečné platby, garance)", priority:"Střední", figma:"F-360–F-362" },
-      { id:"11.7", desc:"Mobilní optimalizace formulářů — input types, autofill", priority:"Vysoká", figma:"F-363–F-366" },
-      { id:"11.8", desc:"Navrhnout guest checkout bez nutnosti registrace", priority:"Vysoká", figma:"F-366a–F-366c" }
+      { id:"11.1", desc:"Redesign konverzn\u00ed z\u00f3ny - cena, varianty, CTA na jednom m\u00edst\u011b", priority:"Kritick\u00e1", figma:["200","201","202","203"], tags:["#grafika","#redesign"], explain:"Konverzn\u00ed z\u00f3na je rozt\u0159\u00ed\u0161t\u011bn\u00e1" },
+      { id:"11.2", desc:"Zv\u011bt\u0161it a zv\u00fdraznit tla\u010d\u00edtko P\u0159idat do ko\u0161\u00edku", priority:"Kritick\u00e1", figma:["204","205"], tags:["#grafika","#redesign"], explain:"CTA se ztr\u00e1c\u00ed" },
+      { id:"11.3", desc:"P\u0159idat sticky CTA bar na mobilu p\u0159i scrollu", priority:"Vysok\u00e1", figma:["206","207","208"], tags:["#grafika","#redesign"], explain:"CTA zmiz\u00ed p\u0159i scrollu" },
+      { id:"11.4", desc:"Zobrazit dostupnost a dod\u00e1n\u00ed u CTA", priority:"Vysok\u00e1", figma:["209","210"], tags:["#grafika","#redesign"], explain:"Kl\u00ed\u010dov\u00e1 informace pro rozhodnut\u00ed" },
+      { id:"11.5", desc:"P\u0159idat v\u00fdb\u011br variant (barva, velikost) s vizu\u00e1ln\u00ed indikac\u00ed", priority:"Vysok\u00e1", figma:["211","212","213"], tags:["#grafika","#redesign"], explain:"Varianty jsou nep\u0159ehledn\u00e9" },
+      { id:"11.6", desc:"P\u0159idat mno\u017estevn\u00ed slevu info k cen\u011b", priority:"Vysok\u00e1", figma:["214","215"], tags:["#grafika","#redesign"], explain:"U\u017eivatel nevid\u00ed \u017ee m\u016f\u017ee u\u0161et\u0159it" },
+      { id:"11.7", desc:"P\u0159idat trust prvky pod CTA (doprava zdarma, garance)", priority:"Vysok\u00e1", figma:["216","217","218"], tags:["#grafika","#redesign"], explain:"Sni\u017euje bari\u00e9ry n\u00e1kupu" },
+      { id:"11.8", desc:"P\u0159idat obl\u00edben\u00e9 / wishlist tla\u010d\u00edtko", priority:"St\u0159edn\u00ed", figma:["219"], tags:["#grafika","#redesign"], explain:"Mo\u017enost ulo\u017eit na pozd\u011bji" },
+      { id:"11.9", desc:"Redesign v\u00fdb\u011bru mno\u017estv\u00ed - v\u011bt\u0161\u00ed +/- tla\u010d\u00edtka", priority:"Vysok\u00e1", figma:["220","221"], tags:["#grafika","#redesign"], explain:"P\u0159\u00edli\u0161 mal\u00e9 touch targets" },
+      { id:"11.10", desc:"Zobrazit \u00fasporu oproti b\u011b\u017en\u00e9 cen\u011b", priority:"Vysok\u00e1", figma:["222","223"], tags:["#grafika","#redesign"], explain:"Motivace k n\u00e1kupu" },
+      { id:"11.11", desc:"P\u0159idat sd\u00edlen\u00ed produktu (link, soci\u00e1ln\u00ed s\u00edt\u011b)", priority:"N\u00edzk\u00e1", figma:["224"], tags:["#grafika"], explain:"Sd\u00edlen\u00ed pro roz\u0161\u00ed\u0159en\u00ed dosahu" }
     ]
   },
   {
-    id: 12,
-    name: "Poděkování za objednávku",
+    id: 12, name: "Produktov\u00fd detail - Obsah a Popis",
     tasks: [
-      { id:"12.1", desc:"Redesign stránky poděkování — jasné potvrzení a další kroky", priority:"Vysoká", figma:"F-367–F-370" },
-      { id:"12.2", desc:"Přidat cross-sell na stránce poděkování", priority:"Střední", figma:"F-371–F-373" },
-      { id:"12.3", desc:"Navrhnout CTA pro registraci / Mamutex+ po objednávce", priority:"Střední", figma:"F-374–F-376" },
-      { id:"12.4", desc:"Přidat sdílení objednávky na sociální sítě", priority:"Nízká", figma:"F-377" }
+      { id:"12.1", desc:"Redesign z\u00e1lo\u017eek (popis, recenze, parametry) - srozumiteln\u011bj\u0161\u00ed navigace", priority:"Vysok\u00e1", figma:["230","231","232"], tags:["#grafika","#redesign"], explain:"Z\u00e1lo\u017eky jsou nep\u0159ehledn\u00e9" },
+      { id:"12.2", desc:"Navrhnout sekci produktov\u00fdch parametr\u016f a specifikac\u00ed", priority:"Vysok\u00e1", figma:["233","234","235"], tags:["#grafika","#redesign"], explain:"Parametry jsou schovan\u00e9" },
+      { id:"12.3", desc:"P\u0159idat cross-sell blok \u201e\u010casto kupov\u00e1no spole\u010dn\u011b\u201c", priority:"Vysok\u00e1", figma:["236","237","238"], tags:["#grafika","#redesign"], explain:"Zvy\u0161uje AOV" },
+      { id:"12.4", desc:"P\u0159idat blok recenz\u00ed s hv\u011bzdi\u010dkami a foto", priority:"Vysok\u00e1", figma:["239","240","241"], tags:["#grafika","#redesign"], explain:"Soci\u00e1ln\u00ed d\u016fkaz" },
+      { id:"12.5", desc:"P\u0159idat breadcrumbs a zp\u011bt na kategorii", priority:"St\u0159edn\u00ed", figma:["242","243"], tags:["#grafika","#redesign"], explain:"Orientace v hierarchii" },
+      { id:"12.6", desc:"Navrhnout related products sekci", priority:"Vysok\u00e1", figma:["244","245"], tags:["#grafika","#redesign"], explain:"Lep\u0161\u00ed discovery" },
+      { id:"12.7", desc:"Form\u00e1tov\u00e1n\u00ed popisu - nadpisy, odr\u00e1\u017eky, tabulky", priority:"Vysok\u00e1", figma:["246","247"], tags:["#grafika","#redesign"], explain:"\u0160patn\u011b form\u00e1tovan\u00fd text" },
+      { id:"12.8", desc:"P\u0159idat FAQ sekci na produktov\u00fd detail", priority:"St\u0159edn\u00ed", figma:["248","249"], tags:["#grafika","#redesign"], explain:"Zodpov\u011bd\u011bn\u00ed ot\u00e1zek" },
+      { id:"12.9", desc:"P\u0159idat naposledy prohl\u00ed\u017een\u00e9 produkty", priority:"St\u0159edn\u00ed", figma:["250"], tags:["#grafika"], explain:"Snadn\u00fd n\u00e1vrat" },
+      { id:"12.10", desc:"Sjednotit spacing mezi bloky na detailu", priority:"Vysok\u00e1", figma:["251","252","253"], tags:["#grafika","#redesign"], explain:"Nekonzistentn\u00ed mezery" },
+      { id:"12.11", desc:"P\u0159idat kontextuáln\u00ed CTA do popisu (nap\u0159. u v\u00fdhod produktu)", priority:"St\u0159edn\u00ed", figma:["254","255"], tags:["#grafika","#redesign"], explain:"Zv\u00fd\u0161en\u00ed konverze" }
     ]
   },
   {
-    id: 13,
-    name: "Registrace a přihlášení",
+    id: 13, name: "Mno\u017estvenn\u00ed sleva / Bal\u00ed\u010dky",
     tasks: [
-      { id:"13.1", desc:"Redesign přihlašovacího formuláře — čistý, minimální", priority:"Vysoká", figma:"F-378–F-381" },
-      { id:"13.2", desc:"Navrhnout registrační formulář s benefity registrace", priority:"Vysoká", figma:"F-382–F-386" },
-      { id:"13.3", desc:"Přidat social login (Google, Facebook)", priority:"Střední", figma:"F-387–F-389" },
-      { id:"13.4", desc:"Navrhnout stránku obnovy hesla", priority:"Střední", figma:"F-390–F-391" },
-      { id:"13.5", desc:"Mobilní optimalizace login/registrace", priority:"Vysoká", figma:"F-392–F-394" }
+      { id:"13.1", desc:"Navrhnout vizuáln\u00ed zobrazen\u00ed mno\u017estvenn\u00ed slevy - tabulka s cenami", priority:"Vysok\u00e1", figma:["260","261","262"], tags:["#grafika","#redesign"], explain:"U\u017eivatel nevid\u00ed v\u00fdhodu objemov\u00e9ho n\u00e1kupu" },
+      { id:"13.2", desc:"P\u0159idat progress bar k dal\u0161\u00ed slevov\u00e9 hladin\u011b", priority:"Vysok\u00e1", figma:["263","264"], tags:["#grafika","#redesign"], explain:"Motivace p\u0159idat dal\u0161\u00ed kus" },
+      { id:"13.3", desc:"Navrhnout bundle/bal\u00ed\u010dky s \u00fasporou", priority:"St\u0159edn\u00ed", figma:["265","266"], tags:["#grafika","#redesign"], explain:"Zvy\u0161uje AOV" }
     ]
   },
   {
-    id: 14,
-    name: "Zákaznický účet",
+    id: 14, name: "Outfindo Pr\u016fvodce",
     tasks: [
-      { id:"14.1", desc:"Redesign dashboard zákaznického účtu", priority:"Vysoká", figma:"F-395–F-399" },
-      { id:"14.2", desc:"Navrhnout přehled objednávek s historií a stavy", priority:"Vysoká", figma:"F-400–F-404" },
-      { id:"14.3", desc:"Navrhnout správu adres — přidání, editace, výchozí", priority:"Střední", figma:"F-405–F-407" },
-      { id:"14.4", desc:"Navrhnout stránku oblíbených produktů (wishlist)", priority:"Střední", figma:"F-408–F-410" },
-      { id:"14.5", desc:"Mamutex+ členská sekce v účtu", priority:"Vysoká", figma:"F-411–F-415" },
-      { id:"14.6", desc:"Mobilní zákaznický účet — tab navigace", priority:"Vysoká", figma:"F-416–F-419" }
+      { id:"14.1", desc:"Redesign Outfindo widgetu - vizuáln\u00ed soulad s eshopem", priority:"Vysok\u00e1", figma:["270","271","272"], tags:["#grafika","#redesign"], explain:"Widget vypad\u00e1 jako ciz\u00ed prvek" },
+      { id:"14.2", desc:"Upravit barvy a typografii widgetu na brand", priority:"Vysok\u00e1", figma:["273","274"], tags:["#grafika","#redesign"], explain:"Nekonzistentn\u00ed branding" },
+      { id:"14.3", desc:"Opravit mobiln\u00ed zobrazen\u00ed pr\u016fvodce", priority:"Vysok\u00e1", figma:["275","276"], tags:["#grafika","#redesign"], explain:"Na mobilu se rozbíjí" },
+      { id:"14.4", desc:"P\u0159idat progress indik\u00e1tor do pr\u016fvodce", priority:"St\u0159edn\u00ed", figma:["277"], tags:["#grafika","#redesign"], explain:"U\u017eivatel nevid\u00ed kolik krok\u016f zb\u00fdv\u00e1" },
+      { id:"14.5", desc:"Navrhnout v\u00fdsledkovou str\u00e1nku pr\u016fvodce", priority:"Vysok\u00e1", figma:["278","279"], tags:["#grafika","#redesign"], explain:"V\u00fdsledky nejsou p\u0159ehledn\u00e9" },
+      { id:"14.6", desc:"P\u0159idat mo\u017enost zm\u011bnit odpov\u011bdi zp\u011btn\u011b", priority:"St\u0159edn\u00ed", figma:["280"], tags:["#grafika"], explain:"Nelze opravit chybu" },
+      { id:"14.7", desc:"P\u0159idat CTA do v\u00fdsledk\u016f pr\u016fvodce", priority:"Vysok\u00e1", figma:["281","282"], tags:["#grafika","#redesign"], explain:"Chyb\u00ed jasn\u00e9 dal\u0161\u00ed kroky" },
+      { id:"14.8", desc:"Sjednotit ikony a ilustrace v pr\u016fvodci", priority:"St\u0159edn\u00ed", figma:["283","284"], tags:["#grafika"], explain:"R\u016fzn\u00e9 styly ikon" },
+      { id:"14.9", desc:"P\u0159idat zp\u011btnou vazbu po dokon\u010den\u00ed pr\u016fvodce", priority:"N\u00edzk\u00e1", figma:["285"], tags:["#grafika"], explain:"Vylep\u0161en\u00ed UX na z\u00e1klad\u011b dat" }
     ]
   },
   {
-    id: 15,
-    name: "Mamutex+ věrnostní program",
+    id: 15, name: "Ko\u0161\u00edk - Krok 1",
     tasks: [
-      { id:"15.1", desc:"Navrhnout landing page Mamutex+ — benefity, levels, CTA", priority:"Kritická", figma:"F-420–F-428" },
-      { id:"15.2", desc:"Navrhnout vizuální systém pro member levels", priority:"Vysoká", figma:"F-429–F-433" },
-      { id:"15.3", desc:"Přidat Mamutex+ badge na produktové karty", priority:"Vysoká", figma:"F-434–F-436" },
-      { id:"15.4", desc:"Navrhnout komunikaci exkluzivních slev pro členy", priority:"Vysoká", figma:"F-437–F-440" },
-      { id:"15.5", desc:"Navrhnout onboarding flow pro nové členy", priority:"Střední", figma:"F-441–F-444" },
-      { id:"15.6", desc:"Navrhnout Mamutex+ progress bar (body/úrovně)", priority:"Střední", figma:"F-445–F-447" }
+      { id:"15.1", desc:"Redesign mini ko\u0161\u00edku (dropdown) - p\u0159ehlednost polo\u017eek", priority:"Vysok\u00e1", figma:["290","291","292"], tags:["#grafika","#redesign"], explain:"Mini ko\u0161\u00edk je nep\u0159ehledn\u00fd" },
+      { id:"15.2", desc:"P\u0159idat progress bar k doprav\u011b zdarma", priority:"Vysok\u00e1", figma:["293","294"], tags:["#grafika","#redesign"], explain:"Motivace doplnit objedn\u00e1vku" },
+      { id:"15.3", desc:"Navrhnout upsell sekci v ko\u0161\u00edku", priority:"Vysok\u00e1", figma:["295","296","297"], tags:["#grafika","#redesign"], explain:"Zvy\u0161uje AOV" },
+      { id:"15.4", desc:"Sjednotit zobrazen\u00ed slev a kup\u00f3n\u016f v ko\u0161\u00edku", priority:"St\u0159edn\u00ed", figma:["298","299"], tags:["#grafika","#redesign"], explain:"Sleva nen\u00ed jasn\u011b viditeln\u00e1" },
+      { id:"15.5", desc:"Zv\u011bt\u0161it produktov\u00e9 fotky v ko\u0161\u00edku", priority:"Vysok\u00e1", figma:["300","301"], tags:["#grafika","#redesign"], explain:"P\u0159\u00edli\u0161 mal\u00e9 fotky" },
+      { id:"15.6", desc:"P\u0159idat mo\u017enost zm\u011bnit variantu p\u0159\u00edmo v ko\u0161\u00edku", priority:"St\u0159edn\u00ed", figma:["302"], tags:["#grafika","#redesign"], explain:"U\u017eivatel mus\u00ed se vracet" },
+      { id:"15.7", desc:"P\u0159idat indik\u00e1tor po\u010dtu polo\u017eek na ikonu ko\u0161\u00edku", priority:"St\u0159edn\u00ed", figma:["303"], tags:["#grafika"], explain:"Chyb\u00ed feedback" },
+      { id:"15.8", desc:"Mobiln\u00ed ko\u0161\u00edk - full-page layout", priority:"Vysok\u00e1", figma:["304","305","306"], tags:["#grafika","#redesign"], explain:"Dropdown na mobilu nefunguje" }
     ]
   },
   {
-    id: 16,
-    name: "Footer",
+    id: 16, name: "Ko\u0161\u00edk - Krok 2",
     tasks: [
-      { id:"16.1", desc:"Redesign footeru — přehledné sloupce s odkazy", priority:"Vysoká", figma:"F-448–F-452" },
-      { id:"16.2", desc:"Přidat newsletter signup do footeru", priority:"Vysoká", figma:"F-453–F-455" },
-      { id:"16.3", desc:"Přidat platební metody a certifikáty do footeru", priority:"Střední", figma:"F-456–F-458" },
-      { id:"16.4", desc:"Přidat sociální sítě do footeru", priority:"Střední", figma:"F-459–F-460" },
-      { id:"16.5", desc:"Mobilní footer — kolapsovatelné sekce", priority:"Vysoká", figma:"F-461–F-464" }
+      { id:"16.1", desc:"Navrhnout kroky objedn\u00e1vky - progress indik\u00e1tor", priority:"Kritick\u00e1", figma:["310","311","312","313"], tags:["#grafika","#redesign"], explain:"U\u017eivatel nevid\u00ed kde v procesu je" },
+      { id:"16.2", desc:"Redesign formul\u00e1\u0159\u016f - labeling, validace, error stavy", priority:"Kritick\u00e1", figma:["314","315","316","317"], tags:["#grafika","#redesign"], explain:"Formul\u00e1\u0159e jsou matou\u010d\u00ed" },
+      { id:"16.3", desc:"Navrhnout v\u00fdb\u011br dopravy - vizuáln\u00ed karty s logy", priority:"Vysok\u00e1", figma:["318","319","320"], tags:["#grafika","#redesign"], explain:"V\u00fdb\u011br dopravy je nep\u0159ehledn\u00fd" },
+      { id:"16.4", desc:"Navrhnout v\u00fdb\u011br platby - vizuáln\u00ed karty s logy", priority:"Vysok\u00e1", figma:["321","322","323"], tags:["#grafika","#redesign"], explain:"V\u00fdb\u011br platby je nep\u0159ehledn\u00fd" },
+      { id:"16.5", desc:"P\u0159idat rekapitulaci objedn\u00e1vky p\u0159ed odesl\u00e1n\u00edm", priority:"Vysok\u00e1", figma:["324","325","326"], tags:["#grafika","#redesign"], explain:"U\u017eivatel si chce ov\u011b\u0159it" },
+      { id:"16.6", desc:"Navrhnout trust prvky v checkoutu (bezpe\u010dn\u00e9 platby, garance)", priority:"St\u0159edn\u00ed", figma:["327","328"], tags:["#grafika","#redesign"], explain:"Sni\u017euje bari\u00e9ry" },
+      { id:"16.7", desc:"Mobiln\u00ed optimalizace formul\u00e1\u0159\u016f - input types, autofill", priority:"Vysok\u00e1", figma:["329","330","331"], tags:["#grafika","#redesign"], explain:"Mobiln\u00ed formul\u00e1\u0159e jsou pomal\u00e9" },
+      { id:"16.8", desc:"Navrhnout guest checkout bez registrace", priority:"Vysok\u00e1", figma:["332","333"], tags:["#grafika","#redesign"], explain:"Registrace odrazuje" },
+      { id:"16.9", desc:"P\u0159idat Foxentry na\u0161ept\u00e1vání adres", priority:"Vysok\u00e1", figma:["334","335"], tags:["#grafika","#redesign"], explain:"Zrychluje vyplnění" },
+      { id:"16.10", desc:"Sjednotit error stavy a inline validaci", priority:"Vysok\u00e1", figma:["336","337"], tags:["#grafika","#redesign"], explain:"Chyby nejsou jasn\u00e9" },
+      { id:"16.11", desc:"P\u0159idat mo\u017enost ulo\u017eit ko\u0161\u00edk / sd\u00edlet ko\u0161\u00edk", priority:"N\u00edzk\u00e1", figma:["338"], tags:["#grafika"], explain:"B2B u\u017eivatel\u00e9 sd\u00edl\u00ed ko\u0161\u00edky" }
     ]
   },
   {
-    id: 17,
-    name: "Bannery a promo",
+    id: 17, name: "Ko\u0161\u00edk - Krok 3",
     tasks: [
-      { id:"17.1", desc:"Navrhnout šablonu pro akční bannery (sezóna, výprodej)", priority:"Vysoká", figma:"F-465–F-470" },
-      { id:"17.2", desc:"Navrhnout in-page promo stripy mezi produkty", priority:"Střední", figma:"F-471–F-473" },
-      { id:"17.3", desc:"Navrhnout popup pro speciální akce / newsletter", priority:"Střední", figma:"F-474–F-476" },
-      { id:"17.4", desc:"Navrhnout countdown timer pro časově omezené akce", priority:"Střední", figma:"F-477–F-479" },
-      { id:"17.5", desc:"Sjednotit formáty bannerů napříč webem", priority:"Vysoká", figma:"F-480–F-484" }
+      { id:"17.1", desc:"Redesign str\u00e1nky pod\u011bkov\u00e1n\u00ed - jasn\u00e9 potvrzen\u00ed a dal\u0161\u00ed kroky", priority:"Vysok\u00e1", figma:["340","341","342"], tags:["#grafika","#redesign"], explain:"Str\u00e1nka je pr\u00e1zdn\u00e1" },
+      { id:"17.2", desc:"P\u0159idat cross-sell a CTA pro Mamutex+ po objedn\u00e1vce", priority:"St\u0159edn\u00ed", figma:["343","344"], tags:["#grafika","#redesign"], explain:"Prom\u00e9\u0161n\u011b\u0148ov\u00e1n\u00ed" }
     ]
   },
   {
-    id: 18,
-    name: "Trust prvky a sociální důkaz",
+    id: 18, name: "Foxentry",
     tasks: [
-      { id:"18.1", desc:"Navrhnout systém zobrazení recenzí (Heureka, Google)", priority:"Vysoká", figma:"F-485–F-489" },
-      { id:"18.2", desc:"Přidat trust badges na klíčové stránky", priority:"Vysoká", figma:"F-490–F-493" },
-      { id:"18.3", desc:"Navrhnout sekci \"Zákazníci nám důvěřují\" s čísly", priority:"Střední", figma:"F-494–F-496" },
-      { id:"18.4", desc:"Navrhnout zobrazení hodnocení na produktových kartách", priority:"Vysoká", figma:"F-497–F-500" },
-      { id:"18.5", desc:"Přidat B2B reference a loga firem", priority:"Střední", figma:"F-501–F-503" },
-      { id:"18.6", desc:"Navrhnout notification bar s čerstvými objednávkami", priority:"Nízká", figma:"F-504" }
+      { id:"18.1", desc:"Implementovat Foxentry pro validaci a na\u0161ept\u00e1v\u00e1n\u00ed adres v checkoutu", priority:"Vysok\u00e1", figma:["350","351"], tags:["#grafika","#redesign"], explain:"Zrychluje vypl\u0148ov\u00e1n\u00ed a sni\u017euje chyby" }
     ]
   },
   {
-    id: 19,
-    name: "Informační stránky",
+    id: 19, name: "Pr\u00e1zdn\u00fd ko\u0161\u00edk",
     tasks: [
-      { id:"19.1", desc:"Redesign stránky O nás — příběh, tým, hodnoty", priority:"Střední", figma:"F-505–F-508" },
-      { id:"19.2", desc:"Redesign stránky Kontakt — mapa, formulář, osobní kontakt", priority:"Vysoká", figma:"F-509–F-513" },
-      { id:"19.3", desc:"Navrhnout stránku Doprava a platba — přehledný layout", priority:"Vysoká", figma:"F-514–F-517" },
-      { id:"19.4", desc:"Redesign stránky Obchodní podmínky — čitelný formát", priority:"Střední", figma:"F-518–F-519" },
-      { id:"19.5", desc:"Navrhnout FAQ stránku s vyhledáváním a kategoriemi", priority:"Střední", figma:"F-520–F-523" },
-      { id:"19.6", desc:"Navrhnout stránku Reklamace — kroky procesu", priority:"Střední", figma:"F-524–F-526" }
+      { id:"19.1", desc:"Navrhnout pr\u00e1zdn\u00fd ko\u0161\u00edk s doporu\u010den\u00edmi produkt\u016f", priority:"St\u0159edn\u00ed", figma:["355","356"], tags:["#grafika","#redesign"], explain:"Pr\u00e1zdn\u00e1 str\u00e1nka bez motivace" },
+      { id:"19.2", desc:"P\u0159idat CTA zp\u011bt na nakupov\u00e1n\u00ed", priority:"St\u0159edn\u00ed", figma:["357"], tags:["#grafika","#redesign"], explain:"Chyb\u00ed jasn\u00fd dal\u0161\u00ed krok" },
+      { id:"19.3", desc:"P\u0159idat ilustraci / ikonu pr\u00e1zdn\u00e9ho ko\u0161\u00edku", priority:"N\u00edzk\u00e1", figma:["358"], tags:["#grafika"], explain:"Vizuáln\u00ed informace" }
     ]
   },
   {
-    id: 20,
-    name: "Blog / Magazín",
+    id: 20, name: "P\u0159ihl\u00e1\u0161en\u00ed / Registrace",
     tasks: [
-      { id:"20.1", desc:"Navrhnout listing blogových článků — karty s náhledem", priority:"Střední", figma:"F-527–F-530" },
-      { id:"20.2", desc:"Redesign šablony blogového článku — čitelnost, obrázky", priority:"Střední", figma:"F-531–F-535" },
-      { id:"20.3", desc:"Přidat related articles pod článek", priority:"Nízká", figma:"F-536–F-537" },
-      { id:"20.4", desc:"Navrhnout CTA bloky v článcích (produkt, newsletter)", priority:"Střední", figma:"F-538–F-540" },
-      { id:"20.5", desc:"Přidat sidebar s kategoriemi a populárními články", priority:"Nízká", figma:"F-541–F-542" }
+      { id:"20.1", desc:"Redesign p\u0159ihla\u0161ovac\u00edho formul\u00e1\u0159e - \u010dist\u00fd, minim\u00e1ln\u00ed", priority:"Vysok\u00e1", figma:["360","361","362"], tags:["#grafika","#redesign"], explain:"Formul\u00e1\u0159 je p\u0159epln\u011bn\u00fd" },
+      { id:"20.2", desc:"Navrhnout registra\u010dn\u00ed formul\u00e1\u0159 s benefity registrace", priority:"Vysok\u00e1", figma:["363","364","365"], tags:["#grafika","#redesign"], explain:"Chyb\u00ed motivace k registraci" },
+      { id:"20.3", desc:"P\u0159idat social login (Google, Facebook)", priority:"St\u0159edn\u00ed", figma:["366","367"], tags:["#grafika","#redesign"], explain:"Zrychluje registraci" }
     ]
   },
   {
-    id: 21,
-    name: "B2B / Velkoobchod",
+    id: 21, name: "Kontaktn\u00ed str\u00e1nka",
     tasks: [
-      { id:"21.1", desc:"Navrhnout B2B landing page s benefity a registrací", priority:"Vysoká", figma:"F-543–F-548" },
-      { id:"21.2", desc:"Navrhnout B2B ceník / kalkulačku objemových slev", priority:"Vysoká", figma:"F-549–F-553" },
-      { id:"21.3", desc:"Navrhnout B2B registrační formulář s IČO validací", priority:"Střední", figma:"F-554–F-556" },
-      { id:"21.4", desc:"Navrhnout B2B produktový katalog ke stažení", priority:"Střední", figma:"F-557–F-559" },
-      { id:"21.5", desc:"B2B kontaktní formulář s výběrem segmentu", priority:"Střední", figma:"F-560–F-562" }
+      { id:"21.1", desc:"Redesign kontaktn\u00ed str\u00e1nky - mapa, formul\u00e1\u0159, osobn\u00ed kontakt", priority:"Vysok\u00e1", figma:["370","371","372"], tags:["#grafika","#redesign"], explain:"Str\u00e1nka je nep\u0159ehledn\u00e1" },
+      { id:"21.2", desc:"P\u0159idat fotky t\u00fdmu / kontaktn\u00edch osob", priority:"Vysok\u00e1", figma:["373","374"], tags:["#grafika","#redesign"], explain:"Budov\u00e1n\u00ed d\u016fv\u011bry" },
+      { id:"21.3", desc:"P\u0159idat online chat widget na kontaktn\u00ed str\u00e1nku", priority:"St\u0159edn\u00ed", figma:["375"], tags:["#grafika","#redesign"], explain:"Rychl\u00e1 komunikace" },
+      { id:"21.4", desc:"P\u0159idat FAQ sekci na kontaktn\u00ed str\u00e1nku", priority:"St\u0159edn\u00ed", figma:["376","377"], tags:["#grafika","#redesign"], explain:"Sni\u017euje po\u010det dotaz\u016f" }
     ]
   },
   {
-    id: 22,
-    name: "Mobilní specifika — globální",
+    id: 22, name: "Doprava a platba",
     tasks: [
-      { id:"22.1", desc:"Navrhnout bottom navigation bar pro mobil", priority:"Vysoká", figma:"F-563–F-568" },
-      { id:"22.2", desc:"Optimalizovat touch targets — minimum 44px", priority:"Vysoká", figma:"F-569–F-573" },
-      { id:"22.3", desc:"Navrhnout swipe gesta pro galerie a karusely", priority:"Střední", figma:"F-574–F-576" },
-      { id:"22.4", desc:"Přidat pull-to-refresh pattern", priority:"Nízká", figma:"F-577" },
-      { id:"22.5", desc:"Navrhnout mobilní sticky CTA pro konverzní stránky", priority:"Vysoká", figma:"F-578–F-581" },
-      { id:"22.6", desc:"Optimalizovat font-size pro mobilní čtení (min 14px)", priority:"Vysoká", figma:"F-582–F-585" },
-      { id:"22.7", desc:"Navrhnout landscape orientaci pro klíčové stránky", priority:"Nízká", figma:"F-585a" }
+      { id:"22.1", desc:"Navrhnout p\u0159ehlednou str\u00e1nku dopravy - vizuáln\u00ed karty s logy p\u0159epravc\u016f", priority:"Vysok\u00e1", figma:["380","381","382"], tags:["#grafika","#redesign"], explain:"Nep\u0159ehledn\u00e1 tabulka" },
+      { id:"22.2", desc:"Navrhnout p\u0159ehlednou str\u00e1nku platby - vizuáln\u00ed karty", priority:"Vysok\u00e1", figma:["383","384"], tags:["#grafika","#redesign"], explain:"Nep\u0159ehledn\u00fd v\u00fdpis" },
+      { id:"22.3", desc:"P\u0159idat kalkulátor dopravy", priority:"St\u0159edn\u00ed", figma:["385","386"], tags:["#grafika","#redesign"], explain:"U\u017eivatel chce v\u011bd\u011bt cenu p\u0159edem" }
     ]
   },
   {
-    id: 23,
-    name: "Notifikace a zprávy",
+    id: 23, name: "Reklamace a vr\u00e1cen\u00ed",
     tasks: [
-      { id:"23.1", desc:"Navrhnout toast notifikace (přidáno do košíku, úspěch, chyba)", priority:"Vysoká", figma:"F-586–F-590" },
-      { id:"23.2", desc:"Navrhnout cookie bar — GDPR compliant", priority:"Vysoká", figma:"F-591–F-594" },
-      { id:"23.3", desc:"Navrhnout inline error a success stavy pro formuláře", priority:"Vysoká", figma:"F-595–F-599" },
-      { id:"23.4", desc:"Navrhnout systém modal oken (potvrzení, varování)", priority:"Střední", figma:"F-600–F-603" },
-      { id:"23.5", desc:"Navrhnout loading stavy a skeleton screens", priority:"Střední", figma:"F-604–F-607" }
+      { id:"23.1", desc:"Navrhnout str\u00e1nku reklamace - kroky procesu", priority:"St\u0159edn\u00ed", figma:["390","391","392"], tags:["#grafika","#redesign"], explain:"Proces nen\u00ed jasn\u00fd" },
+      { id:"23.2", desc:"P\u0159idat formul\u00e1\u0159 pro reklamaci online", priority:"St\u0159edn\u00ed", figma:["393","394"], tags:["#grafika","#redesign"], explain:"Chyb\u00ed online formul\u00e1\u0159" },
+      { id:"23.3", desc:"Navrhnout krokov\u00fd pr\u016fvodce reklamac\u00ed", priority:"St\u0159edn\u00ed", figma:["395","396"], tags:["#grafika","#redesign"], explain:"Slo\u017eit\u00fd proces" },
+      { id:"23.4", desc:"P\u0159idat FAQ k reklamac\u00edm", priority:"N\u00edzk\u00e1", figma:["397"], tags:["#grafika"], explain:"Nej\u010dast\u011bj\u0161\u00ed dotazy" },
+      { id:"23.5", desc:"P\u0159idat informace o z\u00e1ruce u produktu", priority:"St\u0159edn\u00ed", figma:["398","399"], tags:["#grafika","#redesign"], explain:"D\u016fle\u017eit\u00e1 informace p\u0159ed n\u00e1kupem" }
     ]
   },
   {
-    id: 24,
-    name: "Porovnání produktů",
+    id: 24, name: "Mamutex+",
     tasks: [
-      { id:"24.1", desc:"Navrhnout funkci porovnání — výběr produktů", priority:"Střední", figma:"F-608–F-611" },
-      { id:"24.2", desc:"Navrhnout tabulku porovnání s highlighted rozdíly", priority:"Střední", figma:"F-612–F-615" },
-      { id:"24.3", desc:"Mobilní porovnání — swipe mezi produkty", priority:"Střední", figma:"F-616–F-618" },
-      { id:"24.4", desc:"Přidat CTA \"Přidat do košíku\" v porovnání", priority:"Nízká", figma:"F-619" }
+      { id:"24.1", desc:"Navrhnout landing page Mamutex+ - benefity, levels, CTA", priority:"Kritick\u00e1", figma:["400","401","402","403"], tags:["#grafika","#redesign"], explain:"Kl\u00ed\u010dov\u00e1 str\u00e1nka programu" },
+      { id:"24.2", desc:"Navrhnout vizu\u00e1ln\u00ed syst\u00e9m pro member levels", priority:"Vysok\u00e1", figma:["404","405","406"], tags:["#grafika","#redesign"], explain:"\u00darovn\u011b nejsou rozli\u0161en\u00e9" },
+      { id:"24.3", desc:"P\u0159idat Mamutex+ badge na produktov\u00e9 karty", priority:"Vysok\u00e1", figma:["407","408"], tags:["#grafika","#redesign"], explain:"Viditeln\u00e1 v\u00fdhoda pro \u010dleny" },
+      { id:"24.4", desc:"Navrhnout komunikaci exkluzivn\u00edch slev", priority:"Vysok\u00e1", figma:["409","410","411"], tags:["#grafika","#redesign"], explain:"Motivace k registraci" },
+      { id:"24.5", desc:"Navrhnout Mamutex+ progress bar (body/\u00farovn\u011b)", priority:"St\u0159edn\u00ed", figma:["412","413"], tags:["#grafika","#redesign"], explain:"Gamifikace programu" }
     ]
   },
   {
-    id: 25,
-    name: "Dostupnost (Accessibility)",
+    id: 25, name: "Blog / Poradna",
     tasks: [
-      { id:"25.1", desc:"Audit kontrastů — WCAG AA compliance", priority:"Vysoká", figma:"F-620–F-625" },
-      { id:"25.2", desc:"Navrhnout focus stavy pro klávesovou navigaci", priority:"Vysoká", figma:"F-626–F-630" },
-      { id:"25.3", desc:"Zajistit alt texty pro všechny obrázky", priority:"Střední", figma:"F-631–F-633" },
-      { id:"25.4", desc:"Navrhnout skip-to-content odkaz", priority:"Nízká", figma:"F-634" },
-      { id:"25.5", desc:"Ověřit čitelnost s screen readerem", priority:"Střední", figma:"F-635–F-637" },
-      { id:"25.6", desc:"Navrhnout reduced-motion alternativy pro animace", priority:"Nízká", figma:"F-637a" }
+      { id:"25.1", desc:"Navrhnout listing blogovych \u010dl\u00e1nk\u016f - karty s n\u00e1hledem", priority:"St\u0159edn\u00ed", figma:["420","421","422"], tags:["#grafika","#redesign"], explain:"Nep\u0159itažlivý v\u00fdpis" },
+      { id:"25.2", desc:"P\u0159idat kategoriz\u00e1ci \u010dl\u00e1nk\u016f s filtrem", priority:"St\u0159edn\u00ed", figma:["423","424"], tags:["#grafika","#redesign"], explain:"Chyb\u00ed navigace" },
+      { id:"25.3", desc:"Navrhnout sidebar s popul\u00e1rn\u00edmi \u010dl\u00e1nky", priority:"N\u00edzk\u00e1", figma:["425"], tags:["#grafika"], explain:"Lep\u0161\u00ed discovery" },
+      { id:"25.4", desc:"P\u0159idat vyhled\u00e1v\u00e1n\u00ed v blogu", priority:"St\u0159edn\u00ed", figma:["426"], tags:["#grafika","#redesign"], explain:"Rychl\u00e9 nalezen\u00ed" },
+      { id:"25.5", desc:"Navrhnout CTA bloky v \u010dl\u00e1nc\u00edch (produkt, newsletter)", priority:"St\u0159edn\u00ed", figma:["427","428"], tags:["#grafika","#redesign"], explain:"Konverze z blogu" },
+      { id:"25.6", desc:"P\u0159idat related articles na konci \u010dl\u00e1nku", priority:"N\u00edzk\u00e1", figma:["429","430"], tags:["#grafika"], explain:"Intern\u00ed prolinkov\u00e1n\u00ed" },
+      { id:"25.7", desc:"P\u0159idat datum a autora ke \u010dl\u00e1nk\u016fm", priority:"St\u0159edn\u00ed", figma:["431"], tags:["#grafika"], explain:"D\u016fv\u011bryhodnost" },
+      { id:"25.8", desc:"Navrhnout \u0161ablonu pro r\u016fzn\u00e9 typy obsahu (poradna, n\u00e1vod, recenze)", priority:"St\u0159edn\u00ed", figma:["432","433"], tags:["#grafika","#redesign"], explain:"R\u016fzné typy obsahu" },
+      { id:"25.9", desc:"P\u0159idat breadcrumbs do blogu", priority:"N\u00edzk\u00e1", figma:["434"], tags:["#grafika"], explain:"Orientace" },
+      { id:"25.10", desc:"Mobiln\u00ed optimalizace blogu - \u010ditelnost", priority:"Vysok\u00e1", figma:["435","436"], tags:["#grafika","#redesign"], explain:"Texty na mobilu jsou p\u0159\u00edli\u0161 mal\u00e9" }
     ]
   },
   {
-    id: 26,
-    name: "Výkonnost a rychlost (UX)",
+    id: 26, name: "Detail \u010dl\u00e1nku",
     tasks: [
-      { id:"26.1", desc:"Navrhnout lazy loading pro obrázky a sekce", priority:"Vysoká", figma:"F-638–F-641" },
-      { id:"26.2", desc:"Navrhnout skeleton loading pro produktové karty", priority:"Střední", figma:"F-642–F-644" },
-      { id:"26.3", desc:"Optimalizovat obrázky — WebP formát, responsive sizes", priority:"Vysoká", figma:"F-645–F-648" },
-      { id:"26.4", desc:"Navrhnout optimized above-the-fold layout", priority:"Vysoká", figma:"F-649–F-652" },
-      { id:"26.5", desc:"Audit fontu — počet řezů a velikost Poppins/systémových fontů", priority:"Střední", figma:"F-653–F-654" }
+      { id:"26.1", desc:"Redesign \u0161ablony \u010dl\u00e1nku - \u010ditelnost, obr\u00e1zky, form\u00e1tov\u00e1n\u00ed", priority:"St\u0159edn\u00ed", figma:["440","441","442"], tags:["#grafika","#redesign"], explain:"Texty jsou nep\u0159ehledn\u00e9" },
+      { id:"26.2", desc:"P\u0159idat obsah \u010dl\u00e1nku (TOC) pro del\u0161\u00ed texty", priority:"St\u0159edn\u00ed", figma:["443"], tags:["#grafika","#redesign"], explain:"Lep\u0161\u00ed navigace v textu" },
+      { id:"26.3", desc:"P\u0159idat inline CTA pro produkty zmín\u011bné v \u010dl\u00e1nku", priority:"Vysok\u00e1", figma:["444","445"], tags:["#grafika","#redesign"], explain:"Konverze z obsahu" },
+      { id:"26.4", desc:"Navrhnout sd\u00edlen\u00ed \u010dl\u00e1nku na soci\u00e1ln\u00ed s\u00edt\u011b", priority:"N\u00edzk\u00e1", figma:["446"], tags:["#grafika"], explain:"Roz\u0161\u00ed\u0159en\u00ed dosahu" },
+      { id:"26.5", desc:"P\u0159idat odhad doby \u010dten\u00ed", priority:"N\u00edzk\u00e1", figma:["447"], tags:["#grafika"], explain:"U\u017eivatelsk\u00fd komfort" },
+      { id:"26.6", desc:"Navrhnout autorský profil pod \u010dl\u00e1nkem", priority:"St\u0159edn\u00ed", figma:["448","449"], tags:["#grafika","#redesign"], explain:"D\u016fv\u011bryhodnost" },
+      { id:"26.7", desc:"P\u0159idat koment\u00e1\u0159e / diskuzi pod \u010dl\u00e1nek", priority:"N\u00edzk\u00e1", figma:["450"], tags:["#grafika"], explain:"Engagement" },
+      { id:"26.8", desc:"Navrhnout newsletter CTA na konci \u010dl\u00e1nku", priority:"St\u0159edn\u00ed", figma:["451","452"], tags:["#grafika","#redesign"], explain:"Konverze na subscripty" },
+      { id:"26.9", desc:"Opravit \u0161\u00ed\u0159ku obsahu - p\u0159\u00edli\u0161 \u0161irok\u00e9 \u0159\u00e1dky", priority:"Vysok\u00e1", figma:["453","454"], tags:["#grafika","#redesign"], explain:"Optim\u00e1ln\u00ed je 60-75 znak\u016f na \u0159\u00e1dek" }
     ]
   },
   {
-    id: 27,
-    name: "SEO & Metadata (UX vrstva)",
+    id: 27, name: "Zna\u010dky / V\u00fdrobci",
     tasks: [
-      { id:"27.1", desc:"Navrhnout strukturu heading hierarchie pro SEO", priority:"Vysoká", figma:"F-655–F-658" },
-      { id:"27.2", desc:"Navrhnout internal linking — related products, breadcrumbs", priority:"Vysoká", figma:"F-659–F-662" },
-      { id:"27.3", desc:"Navrhnout schema markup pro produkty (vizuální rich snippet)", priority:"Střední", figma:"F-663–F-665" },
-      { id:"27.4", desc:"Navrhnout stránku 404 — užitečná s doporučeními", priority:"Střední", figma:"F-666–F-668" },
-      { id:"27.5", desc:"Optimalizovat URL strukturu v návrzích", priority:"Střední", figma:"F-669–F-670" }
+      { id:"27.1", desc:"Navrhnout str\u00e1nku se zna\u010dkami - loga, popisy, filtry", priority:"St\u0159edn\u00ed", figma:["460","461","462"], tags:["#grafika","#redesign"], explain:"Str\u00e1nka chyb\u00ed" },
+      { id:"27.2", desc:"Navrhnout detail zna\u010dky s produkty", priority:"St\u0159edn\u00ed", figma:["463","464"], tags:["#grafika","#redesign"], explain:"Lep\u0161\u00ed navigace" }
     ]
   },
   {
-    id: 28,
-    name: "Animace a mikro-interakce",
+    id: 28, name: "Chybov\u00e1 str\u00e1nka 404",
     tasks: [
-      { id:"28.1", desc:"Navrhnout hover animace pro produktové karty", priority:"Střední", figma:"F-671–F-674" },
-      { id:"28.2", desc:"Navrhnout animaci přidání do košíku", priority:"Střední", figma:"F-675–F-677" },
-      { id:"28.3", desc:"Scroll-triggered animace pro homepage sekce", priority:"Nízká", figma:"F-678–F-680" },
-      { id:"28.4", desc:"Navrhnout page transition animace", priority:"Nízká", figma:"F-681–F-682" },
-      { id:"28.5", desc:"Loading animace pro tlačítka a formuláře", priority:"Střední", figma:"F-683–F-685" }
+      { id:"28.1", desc:"Navrhnout u\u017eite\u010dnou 404 str\u00e1nku s vyhled\u00e1v\u00e1n\u00edm a doporu\u010den\u00edmi", priority:"St\u0159edn\u00ed", figma:["470","471"], tags:["#grafika","#redesign"], explain:"Sou\u010dasn\u00e1 404 je slep\u00e1 uli\u010dka" }
     ]
   },
   {
-    id: 29,
-    name: "Responsivní breakpointy",
+    id: 29, name: "Pati\u010dka Footer",
     tasks: [
-      { id:"29.1", desc:"Definovat breakpointy — mobile, tablet, desktop, wide", priority:"Vysoká", figma:"F-686–F-690" },
-      { id:"29.2", desc:"Navrhnout tablet layout — kategorie, produktový detail", priority:"Vysoká", figma:"F-691–F-695" },
-      { id:"29.3", desc:"Navrhnout wide-screen (1440px+) layout", priority:"Střední", figma:"F-696–F-698" },
-      { id:"29.4", desc:"Ověřit grid systém pro všechny breakpointy", priority:"Vysoká", figma:"F-699–F-702" },
-      { id:"29.5", desc:"Navrhnout adaptivní navigaci pro tablet", priority:"Střední", figma:"F-703–F-705" }
+      { id:"29.1", desc:"Redesign footeru - p\u0159ehledn\u00e9 sloupce, newsletter, platby, certifik\u00e1ty, soci\u00e1ln\u00ed s\u00edt\u011b", priority:"Vysok\u00e1", figma:["475","476","477","478"], tags:["#grafika","#redesign"], explain:"Footer je nep\u0159ehledn\u00fd a chyb\u00ed kl\u00ed\u010dov\u00e9 prvky" }
     ]
   },
   {
-    id: 30,
-    name: "Ikonografie a grafické prvky",
+    id: 30, name: "Recenze a Hodnocen\u00ed",
     tasks: [
-      { id:"30.1", desc:"Navrhnout konzistentní ikonu set pro celý eshop", priority:"Vysoká", figma:"F-706–F-712" },
-      { id:"30.2", desc:"Navrhnout ilustrace pro prázdné stavy (empty cart, no results)", priority:"Střední", figma:"F-713–F-716" },
-      { id:"30.3", desc:"Navrhnout ikony pro kategorie (regály, pneumatiky...)", priority:"Vysoká", figma:"F-717–F-722" },
-      { id:"30.4", desc:"Navrhnout iconové badge systém (novinka, sleva, doprava zdarma)", priority:"Vysoká", figma:"F-723–F-727" },
-      { id:"30.5", desc:"Sjednotit velikosti a styl ikon (stroke vs. fill)", priority:"Střední", figma:"F-728–F-730" }
+      { id:"30.1", desc:"Navrhnout syst\u00e9m zobrazen\u00ed recenz\u00ed (Heureka, Google)", priority:"Vysok\u00e1", figma:["480","481","482"], tags:["#grafika","#redesign"], explain:"Recenze jsou roztr\u00ed\u0161t\u011bn\u00e9" },
+      { id:"30.2", desc:"P\u0159idat trust badges na kl\u00ed\u010dov\u00e9 str\u00e1nky", priority:"Vysok\u00e1", figma:["483","484","485"], tags:["#grafika","#redesign"], explain:"Chyb\u00ed soci\u00e1ln\u00ed d\u016fkaz" },
+      { id:"30.3", desc:"Navrhnout hodnocen\u00ed na produktov\u00fdch kart\u00e1ch (hv\u011bzdi\u010dky)", priority:"Vysok\u00e1", figma:["486","487"], tags:["#grafika","#redesign"], explain:"Hv\u011bzdi\u010dky zvy\u0161uj\u00ed CTR" },
+      { id:"30.4", desc:"P\u0159idat mo\u017enost filtrovat recenze dle hodnocen\u00ed", priority:"St\u0159edn\u00ed", figma:["488"], tags:["#grafika","#redesign"], explain:"Lep\u0161\u00ed orientace" },
+      { id:"30.5", desc:"P\u0159idat fotky z\u00e1kazn\u00edk\u016f k recenz\u00edm", priority:"St\u0159edn\u00ed", figma:["489","490"], tags:["#grafika","#redesign"], explain:"Autentick\u00fd soci\u00e1ln\u00ed d\u016fkaz" }
     ]
   },
   {
-    id: 31,
-    name: "Komponenty — UI Kit",
+    id: 31, name: "Produktov\u00e1 karta component",
     tasks: [
-      { id:"31.1", desc:"Navrhnout systém tlačítek — primární, sekundární, ghost, velikosti", priority:"Vysoká", figma:"F-731–F-737" },
-      { id:"31.2", desc:"Navrhnout input komponenty — text, select, checkbox, radio", priority:"Vysoká", figma:"F-738–F-744" },
-      { id:"31.3", desc:"Navrhnout card komponenty — produkt, blog, promo", priority:"Vysoká", figma:"F-745–F-750" },
-      { id:"31.4", desc:"Navrhnout badge a tag systém", priority:"Střední", figma:"F-751–F-754" },
-      { id:"31.5", desc:"Navrhnout tooltip a popover komponenty", priority:"Nízká", figma:"F-755–F-757" },
-      { id:"31.6", desc:"Dokumentovat spacing scale (4px grid)", priority:"Vysoká", figma:"F-758–F-761" },
-      { id:"31.7", desc:"Navrhnout color palette s primary, secondary, neutral, semantic", priority:"Vysoká", figma:"F-762–F-768" }
+      { id:"31.1", desc:"Navrhnout syst\u00e9m tla\u010d\u00edtek - prim\u00e1rn\u00ed, sekund\u00e1rn\u00ed, ghost, velikosti", priority:"Vysok\u00e1", figma:["500","501","502","503"], tags:["#grafika","#redesign"], explain:"Nekonzistentn\u00ed tla\u010d\u00edtka" },
+      { id:"31.2", desc:"Navrhnout input komponenty - text, select, checkbox, radio", priority:"Vysok\u00e1", figma:["504","505","506"], tags:["#grafika","#redesign"], explain:"Nekonzistentn\u00ed formul\u00e1\u0159ov\u00e9 prvky" },
+      { id:"31.3", desc:"Navrhnout card komponenty - produkt, blog, promo", priority:"Vysok\u00e1", figma:["507","508","509"], tags:["#grafika","#redesign"], explain:"R\u016fzn\u00e9 karty na r\u016fzn\u00fdch m\u00edstech" },
+      { id:"31.4", desc:"Navrhnout badge a tag syst\u00e9m", priority:"St\u0159edn\u00ed", figma:["510","511"], tags:["#grafika","#redesign"], explain:"Nekonzistentn\u00ed \u0161t\u00edtky" },
+      { id:"31.5", desc:"Navrhnout tooltip a popover komponenty", priority:"N\u00edzk\u00e1", figma:["512","513"], tags:["#grafika"], explain:"Chyb\u00ed helpy" },
+      { id:"31.6", desc:"Dokumentovat spacing scale (4px grid)", priority:"Vysok\u00e1", figma:["514","515","516"], tags:["#grafika","#redesign"], explain:"Z\u00e1klad konzistence" }
     ]
   },
   {
-    id: 32,
-    name: "Handoff a implementační pokyny",
+    id: 32, name: "R\u016fzn\u00e9 / Obecn\u00e9 \u00fapravy",
     tasks: [
-      { id:"32.1", desc:"Připravit developer handoff — specifikace, spacing, barvy", priority:"Vysoká", figma:"F-769–F-774" },
-      { id:"32.2", desc:"Vytvořit Shoptet-specific implementační poznámky", priority:"Vysoká", figma:"F-775–F-779" },
-      { id:"32.3", desc:"Připravit QA checklist pro každou stránku", priority:"Střední", figma:"F-780–F-783" },
-      { id:"32.4", desc:"Navrhnout A/B test plán pro klíčové změny", priority:"Střední", figma:"F-784–F-787" },
-      { id:"32.5", desc:"Připravit prioritizaci implementace — co nejdřív, co později", priority:"Vysoká", figma:"F-788–F-792" },
-      { id:"32.6", desc:"Dokumentovat design decisions a rationale", priority:"Střední", figma:"F-793–F-796" },
-      { id:"32.7", desc:"Připravit timeline implementace po fázích (MVP, v2, v3)", priority:"Vysoká", figma:"F-797–F-800" }
+      { id:"32.1", desc:"P\u0159ipravit developer handoff - specifikace, spacing, barvy", priority:"Vysok\u00e1", figma:["520","521","522","523"], tags:["#grafika","#redesign"], explain:"Handoff pro v\u00fdvoj\u00e1\u0159e" },
+      { id:"32.2", desc:"Vytvo\u0159it Shoptet-specific implementa\u010dn\u00ed pozn\u00e1mky", priority:"Vysok\u00e1", figma:["524","525"], tags:["#grafika","#redesign"], explain:"Specifika platformy" },
+      { id:"32.3", desc:"P\u0159ipravit QA checklist pro ka\u017edou str\u00e1nku", priority:"St\u0159edn\u00ed", figma:["526","527"], tags:["#grafika"], explain:"Kontrola kvality" },
+      { id:"32.4", desc:"Navrhnout A/B test pl\u00e1n pro kl\u00ed\u010dov\u00e9 zm\u011bny", priority:"St\u0159edn\u00ed", figma:["528","529"], tags:["#grafika"], explain:"Ov\u011b\u0159en\u00ed hypot\u00e9z" },
+      { id:"32.5", desc:"P\u0159ipravit prioritizaci implementace - co nejd\u0159\u00edv, co pozd\u011bji", priority:"Vysok\u00e1", figma:["530","531","532"], tags:["#grafika","#redesign"], explain:"Roadmapa implementace" }
     ]
   }
 ];
 
-function getPriorityClass(priority) {
-  const map = {
-    'Kritická': 'kriticka',
-    'Velmi vysoká': 'velmi-vysoka',
-    'Vysoká': 'vysoka',
-    'Střední': 'stredni',
-    'Nízká': 'nizka'
-  };
-  return map[priority] || 'stredni';
+function getPriorityClass(p) {
+  const m = {'Kritick\u00e1':'kriticka','Velmi vysok\u00e1':'velmi-vysoka','Vysok\u00e1':'vysoka','St\u0159edn\u00ed':'stredni','N\u00edzk\u00e1':'nizka'};
+  return m[p] || 'stredni';
 }
 
-// Count total tasks
-let totalTasks = 0;
-sections.forEach(s => totalTasks += s.tasks.length);
-
 // Build TOC
-const tocGrid = document.getElementById('tocGrid');
+const tocList = document.getElementById('tocList');
 sections.forEach(s => {
-  const card = document.createElement('a');
-  card.className = 'toc-card';
-  card.href = '#section-' + s.id;
-  card.innerHTML = `
-    <div class="toc-num">${s.id}</div>
-    <div class="toc-info">
-      <div class="name">${s.name}</div>
-      <div class="count">${s.tasks.length} úloh</div>
-    </div>
-  `;
-  card.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.getElementById('section-' + s.id);
-    if (target) {
-      // Open the section
-      const header = target.querySelector('.section-header');
-      const body = target.querySelector('.section-body');
-      if (!header.classList.contains('open')) {
-        header.classList.add('open');
-        body.classList.add('open');
-      }
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-  tocGrid.appendChild(card);
+  const li = document.createElement('li');
+  li.innerHTML = '<a href="#section-' + s.id + '" onclick="openSection(event,' + s.id + ')"><span class="toc-num">' + s.id + '.</span><span class="toc-name">' + s.name + '</span><span class="toc-count">' + s.tasks.length + ' \u00faloh</span></a>';
+  tocList.appendChild(li);
 });
+
+function openSection(e, id) {
+  e.preventDefault();
+  var el = document.getElementById('section-' + id);
+  if (el) {
+    var h = el.querySelector('.section-header');
+    var b = el.querySelector('.section-body');
+    if (!h.classList.contains('open')) { h.classList.add('open'); b.classList.add('open'); }
+    el.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+}
 
 // Build Sections
 const container = document.getElementById('sectionsContainer');
@@ -627,62 +574,59 @@ sections.forEach((s, idx) => {
   const block = document.createElement('div');
   block.className = 'section-block';
   block.id = 'section-' + s.id;
-
   const isOpen = s.id === 1;
 
   let tasksHTML = '';
   s.tasks.forEach(t => {
-    tasksHTML += `
-      <div class="task">
-        <div class="task-id">${t.id}</div>
-        <div class="task-content">
-          <div class="task-desc">${t.desc}</div>
-          <div class="task-meta">
-            <span class="badge ${getPriorityClass(t.priority)}">${t.priority}</span>
-            ${t.figma ? '<span class="figma-ref">Figma: ' + t.figma + '</span>' : ''}
-          </div>
-        </div>
-      </div>
-    `;
+    let figmaHTML = '';
+    if (t.figma && t.figma.length > 0) {
+      figmaHTML = t.figma.map(f => figmaLink(f)).join(' ');
+    } else {
+      figmaHTML = '<span style="font-size:10px;color:#94a3b8;font-style:italic">\u2014</span>';
+    }
+    let tagsHTML = '';
+    if (t.tags && t.tags.length > 0) {
+      tagsHTML = t.tags.map(tg => tagPill(tg)).join(' ');
+    }
+    tasksHTML += '<div class="task">' +
+      '<div class="task-id">' + t.id + '</div>' +
+      '<div class="task-content">' +
+        '<div class="task-desc">' + t.desc + '</div>' +
+        (t.explain ? '<div class="task-explain">' + t.explain + '</div>' : '') +
+        '<div class="task-meta">' +
+          '<span class="badge ' + getPriorityClass(t.priority) + '">' + t.priority + '</span> ' +
+          figmaHTML + ' ' +
+          tagsHTML +
+        '</div>' +
+      '</div>' +
+    '</div>';
   });
 
-  block.innerHTML = `
-    <div class="section-header${isOpen ? ' open' : ''}">
-      <div class="section-num">${s.id}</div>
-      <div class="section-title">${s.name}</div>
-      <div class="section-count">${s.tasks.length} úloh</div>
-      ${arrowSVG}
-    </div>
-    <div class="section-body${isOpen ? ' open' : ''}">
-      ${tasksHTML}
-    </div>
-  `;
+  block.innerHTML =
+    '<div class="section-header' + (isOpen ? ' open' : '') + '">' +
+      '<div class="section-num">' + s.id + '</div>' +
+      '<div class="section-title">' + s.name + '</div>' +
+      '<div class="section-count">' + s.tasks.length + ' \u00faloh</div>' +
+      arrowSVG +
+    '</div>' +
+    '<div class="section-body' + (isOpen ? ' open' : '') + '">' +
+      tasksHTML +
+    '</div>';
 
   container.appendChild(block);
 
-  // Accordion toggle
   const header = block.querySelector('.section-header');
   const body = block.querySelector('.section-body');
   header.addEventListener('click', () => {
     header.classList.toggle('open');
     body.classList.toggle('open');
-    updateProgress();
   });
 });
 
-// Progress indicator
-function updateProgress() {
-  const openSections = document.querySelectorAll('.section-body.open');
-  let visibleTasks = 0;
-  openSections.forEach(body => {
-    visibleTasks += body.querySelectorAll('.task').length;
-  });
-  const pct = Math.round((visibleTasks / totalTasks) * 100);
-  document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressCount').textContent = visibleTasks + ' of ' + totalTasks + ' tasks';
-}
-
-updateProgress();
+// Count total tasks for verification
+let total = 0;
+sections.forEach(s => total += s.tasks.length);
+console.log('Total tasks: ' + total);
 </script>
 
 </body>
