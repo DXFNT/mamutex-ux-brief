@@ -100,6 +100,42 @@ a:hover{color:#05024E}
 .footer .brand span{color:#05024E;font-weight:700}
 .footer .copy{font-size:11px;color:#94a3b8;margin-top:6px}
 
+/* PROGRESS CARD */
+.progress-card{background:linear-gradient(135deg,#05024E,#0a0867);color:#fff;border-radius:14px;padding:22px 24px;margin-bottom:24px;box-shadow:0 4px 16px rgba(5,2,78,.18);position:relative;overflow:hidden}
+.progress-card::before{content:'';position:absolute;top:-60%;right:-15%;width:45%;height:220%;background:radial-gradient(ellipse,rgba(0,212,255,.18) 0%,transparent 70%);pointer-events:none}
+.progress-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;position:relative}
+.progress-title{font-size:11px;font-weight:600;color:#00D4FF;text-transform:uppercase;letter-spacing:2px}
+.progress-stat{font-size:13px;color:rgba(255,255,255,.75)}
+.progress-stat strong{font-size:28px;font-weight:800;margin-right:4px;background:linear-gradient(135deg,#0065F7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.progress-bar{width:100%;height:10px;background:rgba(255,255,255,.08);border-radius:8px;overflow:hidden;margin-bottom:16px;position:relative}
+.progress-fill{height:100%;background:linear-gradient(90deg,#10b981,#22d3ee);border-radius:8px;transition:width .35s cubic-bezier(.4,0,.2,1);box-shadow:0 0 12px rgba(34,211,238,.4)}
+.progress-actions{display:flex;gap:8px;flex-wrap:wrap;position:relative}
+.btn{font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;padding:8px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#fff;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:rgba(0,212,255,.5);background:rgba(0,212,255,.1)}
+.btn.primary{background:#0065F7;border-color:#0065F7}
+.btn.primary:hover{background:#00D4FF;border-color:#00D4FF;color:#05024E}
+.btn.ghost{background:transparent;border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.45)}
+.btn.ghost:hover{color:#fca5a5;border-color:rgba(248,113,113,.35);background:rgba(248,113,113,.08)}
+.progress-note{font-size:11px;color:rgba(255,255,255,.45);margin-top:10px;position:relative}
+
+/* SECTION COUNT PROGRESS */
+.section-count.done-all{background:#dcfce7;color:#15803d;font-weight:700}
+.section-count.done-some{background:#eff6ff;color:#2563eb;font-weight:600}
+
+/* CHECKBOX */
+.task-check{flex-shrink:0;width:22px;height:22px;margin-top:1px;appearance:none;-webkit-appearance:none;border:2px solid #cbd5e1;border-radius:6px;background:#fff;cursor:pointer;position:relative;transition:all .15s;align-self:flex-start}
+.task-check:hover{border-color:#0065F7;background:#eff6ff}
+.task-check:checked{background:#10b981;border-color:#10b981}
+.task-check:checked::after{content:'';position:absolute;left:5px;top:1px;width:7px;height:12px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+.task.done{background:#f0fdf4;border-color:#bbf7d0}
+.task.done .task-desc{text-decoration:line-through;color:#64748b}
+.task.done .task-explain{opacity:.7}
+.task.done:hover{background:#dcfce7}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);background:#05024E;color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;font-weight:500;box-shadow:0 10px 30px rgba(0,0,0,.25);opacity:0;transition:all .3s cubic-bezier(.4,0,.2,1);z-index:1000;pointer-events:none;border:1px solid rgba(0,212,255,.3);max-width:90vw;text-align:center}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
 @media(max-width:600px){
   .hero{padding:32px 16px 28px}
   .kpi-row{gap:8px}
@@ -111,11 +147,18 @@ a:hover{color:#05024E}
   .section-title{font-size:13px}
   .task{padding:12px;gap:8px}
   .toc-list{columns:1}
+  .progress-card{padding:18px 18px}
+  .progress-stat strong{font-size:24px}
+  .btn{font-size:11px;padding:7px 11px}
 }
 @media(min-width:768px){
   .hero{padding:60px 40px 48px}
   .container{padding:32px 40px 60px}
   .section-body{padding:16px}
+}
+@media print{
+  .progress-actions{display:none}
+  .task-check{display:none}
 }
 </style>
 </head>
@@ -139,6 +182,22 @@ a:hover{color:#05024E}
 </div>
 
 <div class="container">
+
+<!-- PROGRESS CARD -->
+<div class="progress-card">
+  <div class="progress-head">
+    <div class="progress-title">Progres implement&aacute;cie</div>
+    <div class="progress-stat"><strong id="progressDone">0</strong><span id="progressTotal">/ 200</span> úloh <span id="progressPct" style="color:rgba(255,255,255,.5);margin-left:6px">(0 %)</span></div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  <div class="progress-actions">
+    <button class="btn primary" onclick="exportSummary()" type="button">&#128203; Kopírovať progres</button>
+    <button class="btn" onclick="shareLink()" type="button">&#128279; Zdieľať link so stavom</button>
+    <button class="btn" onclick="toggleAllSections()" id="expandAllBtn" type="button">&#128194; Rozbaliť všetky sekcie</button>
+    <button class="btn ghost" onclick="resetState()" type="button">&#8634; Reset</button>
+  </div>
+  <div class="progress-note">Stav sa ukladá lokálne v tomto prehliadači. Zdieľaj link so stavom aby tvoj kolega videl to isté.</div>
+</div>
 
 <!-- PRIORITY LEGEND -->
 <div class="legend">
@@ -591,7 +650,8 @@ sections.forEach((s, idx) => {
     if (t.tags && t.tags.length > 0) {
       tagsHTML = t.tags.map(tg => tagPill(tg)).join(' ');
     }
-    tasksHTML += '<div class="task">' +
+    tasksHTML += '<div class="task" data-task-id="' + t.id + '">' +
+      '<input type="checkbox" class="task-check" aria-label="Ozna&#269;i&#357; ako hotov&eacute;" onclick="toggleTask(\'' + t.id + '\', this.checked)">' +
       '<div class="task-id">' + t.id + '</div>' +
       '<div class="task-content">' +
         '<div class="task-desc">' + t.desc + '</div>' +
@@ -630,6 +690,233 @@ sections.forEach((s, idx) => {
 let total = 0;
 sections.forEach(s => total += s.tasks.length);
 console.log('Total tasks: ' + total);
+
+// ============ STATE MANAGEMENT (Checkboxes & Progress) ============
+const STORAGE_KEY = 'mamutex_ux_brief_progress_v4';
+const allTaskIds = [];
+sections.forEach(s => s.tasks.forEach(t => allTaskIds.push(t.id)));
+const TOTAL_TASKS = allTaskIds.length;
+let doneSet = new Set();
+
+function saveLocal() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify([...doneSet])); } catch(e) {}
+}
+
+function encodeState(set) {
+  const bytes = new Uint8Array(Math.ceil(TOTAL_TASKS / 8));
+  allTaskIds.forEach((id, i) => {
+    if (set.has(id)) bytes[i >> 3] |= (1 << (i & 7));
+  });
+  let bin = '';
+  bytes.forEach(b => bin += String.fromCharCode(b));
+  return btoa(bin).replace(/=/g,'').replace(/\+/g,'-').replace(/\//g,'_');
+}
+
+function decodeState(str) {
+  try {
+    let s = str.replace(/-/g,'+').replace(/_/g,'/');
+    while (s.length % 4) s += '=';
+    const bin = atob(s);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    const set = new Set();
+    allTaskIds.forEach((id, i) => {
+      const byteIdx = i >> 3;
+      if (byteIdx < bytes.length && (bytes[byteIdx] & (1 << (i & 7)))) set.add(id);
+    });
+    return set;
+  } catch(e) { return null; }
+}
+
+function loadState() {
+  // URL hash wins — enables link sharing
+  if (location.hash && location.hash.indexOf('s=') !== -1) {
+    const m = location.hash.match(/s=([A-Za-z0-9_\-]+)/);
+    if (m) {
+      const decoded = decodeState(m[1]);
+      if (decoded) { doneSet = decoded; saveLocal(); return; }
+    }
+  }
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const arr = JSON.parse(raw);
+      if (Array.isArray(arr)) doneSet = new Set(arr);
+    }
+  } catch(e) {}
+}
+
+function toggleTask(id, checked) {
+  if (checked) doneSet.add(id); else doneSet.delete(id);
+  saveLocal();
+  updateTaskUI(id);
+  updateSectionUI(id.split('.')[0]);
+  updateGlobalUI();
+}
+
+function updateTaskUI(id) {
+  const el = document.querySelector('[data-task-id="' + id + '"]');
+  if (!el) return;
+  const done = doneSet.has(id);
+  el.classList.toggle('done', done);
+  const cb = el.querySelector('.task-check');
+  if (cb) cb.checked = done;
+}
+
+function updateSectionUI(sectionId) {
+  const section = sections.find(s => String(s.id) === String(sectionId));
+  if (!section) return;
+  const dc = section.tasks.filter(t => doneSet.has(t.id)).length;
+  const tot = section.tasks.length;
+  const countEl = document.querySelector('#section-' + section.id + ' .section-count');
+  if (countEl) {
+    countEl.textContent = dc + '/' + tot + ' \u00faloh';
+    countEl.classList.toggle('done-all', dc === tot && tot > 0);
+    countEl.classList.toggle('done-some', dc > 0 && dc < tot);
+  }
+}
+
+function updateGlobalUI() {
+  const done = doneSet.size;
+  const pct = TOTAL_TASKS ? (done / TOTAL_TASKS * 100) : 0;
+  const doneEl = document.getElementById('progressDone');
+  const totEl = document.getElementById('progressTotal');
+  const pctEl = document.getElementById('progressPct');
+  const fillEl = document.getElementById('progressFill');
+  if (doneEl) doneEl.textContent = done;
+  if (totEl) totEl.textContent = '/ ' + TOTAL_TASKS;
+  if (pctEl) pctEl.textContent = '(' + (Math.round(pct * 10) / 10).toString().replace(/\.0$/,'') + ' %)';
+  if (fillEl) fillEl.style.width = pct + '%';
+}
+
+function copyToClipboard(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text).then(() => true, () => fallbackCopy(text));
+  }
+  return Promise.resolve(fallbackCopy(text));
+}
+function fallbackCopy(text) {
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    const ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    return ok;
+  } catch(e) { return false; }
+}
+
+function pad(str, n) { str = String(str); return str + ' '.repeat(Math.max(0, n - str.length)); }
+
+function exportSummary() {
+  const done = doneSet.size;
+  const pct = TOTAL_TASKS ? (Math.round(done / TOTAL_TASKS * 1000) / 10) : 0;
+  const today = new Date();
+  const dateStr = today.getDate() + '.' + (today.getMonth()+1) + '.' + today.getFullYear();
+
+  let text = 'Mamutex.cz UX Brief \u2014 Progres (' + dateStr + ')\n';
+  text += '\u2500'.repeat(44) + '\n';
+  text += 'Hotovo: ' + done + ' / ' + TOTAL_TASKS + ' \u00faloh (' + pct + ' %)\n\n';
+  text += 'Po sekci\u00e1ch:\n';
+  sections.forEach(s => {
+    const dc = s.tasks.filter(t => doneSet.has(t.id)).length;
+    const tot = s.tasks.length;
+    const spct = tot ? Math.round(dc/tot*100) : 0;
+    const icon = dc === tot ? '[x]' : (dc > 0 ? '[~]' : '[ ]');
+    text += ' ' + icon + ' ' + pad(s.id + '. ' + s.name, 42) + ' ' + pad(dc + '/' + tot, 7) + ' ' + pad(spct + ' %', 5) + '\n';
+  });
+
+  const remCrit = [], remVH = [], remHigh = [];
+  sections.forEach(s => s.tasks.forEach(t => {
+    if (doneSet.has(t.id)) return;
+    if (t.priority === 'Kritick\u00e1') remCrit.push(t);
+    else if (t.priority === 'Velmi vysok\u00e1') remVH.push(t);
+    else if (t.priority === 'Vysok\u00e1') remHigh.push(t);
+  }));
+  if (remCrit.length) {
+    text += '\nZost\u00e1vaj\u00face kritick\u00e9 (' + remCrit.length + '):\n';
+    remCrit.forEach(t => text += '  \u2022 ' + t.id + ' \u2014 ' + t.desc + '\n');
+  }
+  if (remVH.length) {
+    text += '\nZost\u00e1vaj\u00face ve\u013ami vysok\u00e9 (' + remVH.length + '):\n';
+    remVH.slice(0,15).forEach(t => text += '  \u2022 ' + t.id + ' \u2014 ' + t.desc + '\n');
+    if (remVH.length > 15) text += '  ... a \u010fal\u0161\u00edch ' + (remVH.length - 15) + '\n';
+  }
+  if (remHigh.length) {
+    text += '\nZost\u00e1vaj\u00face vysok\u00e9 (' + remHigh.length + '):\n';
+    remHigh.slice(0,15).forEach(t => text += '  \u2022 ' + t.id + ' \u2014 ' + t.desc + '\n');
+    if (remHigh.length > 15) text += '  ... a \u010fal\u0161\u00edch ' + (remHigh.length - 15) + '\n';
+  }
+
+  const url = location.origin + location.pathname + '#s=' + encodeState(doneSet);
+  text += '\nLink so stavom (otvor aby si videl presne tento progres):\n' + url + '\n';
+
+  copyToClipboard(text).then(ok => {
+    showToast(ok ? '\u2713 Progres skop\u00edrovan\u00fd do schr\u00e1nky' : '\u26a0 Kop\u00edrovanie zlyhalo');
+  });
+}
+
+function shareLink() {
+  const hash = 's=' + encodeState(doneSet);
+  history.replaceState(null, '', '#' + hash);
+  const url = location.origin + location.pathname + '#' + hash;
+  copyToClipboard(url).then(ok => {
+    showToast(ok ? '\u2713 Link skop\u00edrovan\u00fd \u2014 po\u0161li dizajn\u00e9rovi' : '\u26a0 Kop\u00edrovanie zlyhalo');
+  });
+}
+
+function resetState() {
+  if (!confirm('Vymaza\u0165 v\u0161etky ozna\u010den\u00e9 \u00falohy? Tento krok sa ned\u00e1 vr\u00e1ti\u0165.')) return;
+  doneSet.clear();
+  saveLocal();
+  document.querySelectorAll('.task-check').forEach(cb => cb.checked = false);
+  document.querySelectorAll('.task').forEach(t => t.classList.remove('done'));
+  sections.forEach(s => updateSectionUI(s.id));
+  updateGlobalUI();
+  history.replaceState(null, '', location.pathname);
+  showToast('\u2713 Progres resetovan\u00fd');
+}
+
+function toggleAllSections() {
+  const headers = document.querySelectorAll('.section-header');
+  const bodies = document.querySelectorAll('.section-body');
+  const anyClosed = Array.from(headers).some(h => !h.classList.contains('open'));
+  headers.forEach(h => h.classList.toggle('open', anyClosed));
+  bodies.forEach(b => b.classList.toggle('open', anyClosed));
+  const btn = document.getElementById('expandAllBtn');
+  if (btn) btn.innerHTML = anyClosed ? '&#128193; Zbali\u0165 v\u0161etky sekcie' : '&#128194; Rozbali\u0165 v\u0161etky sekcie';
+}
+
+let toastTimer;
+function showToast(msg) {
+  let t = document.getElementById('toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'toast';
+    t.className = 'toast';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// Apply loaded state to DOM after sections are built
+loadState();
+document.querySelectorAll('.task').forEach(el => {
+  const id = el.dataset.taskId;
+  if (id && doneSet.has(id)) {
+    el.classList.add('done');
+    const cb = el.querySelector('.task-check');
+    if (cb) cb.checked = true;
+  }
+});
+sections.forEach(s => updateSectionUI(s.id));
+updateGlobalUI();
 </script>
 
 </body>
