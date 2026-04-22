@@ -216,7 +216,7 @@ a:hover{color:#05024E}
 
 <!-- TABLE OF CONTENTS -->
 <div class="toc">
-  <h2>Obsah &mdash; 32 sekc&iacute;</h2>
+  <h2>Obsah &mdash; 33 sekci&iacute; (+ Final Review)</h2>
   <ol class="toc-list" id="tocList"></ol>
 </div>
 
@@ -228,15 +228,17 @@ a:hover{color:#05024E}
 <!-- FOOTER -->
 <div class="footer">
   <div class="brand"><span>Dexfinity</span> &times; Kvasni&ccaron;ka Jan</div>
-  <div class="copy">Mamutex.cz UX Redesign Brief v4 | 2026</div>
+  <div class="copy">Mamutex.cz UX Redesign Brief v4 | 2026 &middot; Final Review: 22.4.2026</div>
 </div>
 
 <script>
 const FIGMA_BASE = 'https://www.figma.com/design/ZRnydfJQYihgeCcNMXZ09q/Mamutex.cz---Anal%C3%BDza-pou%C5%BEitelnosti?node-id=0-1';
+const FIGMA_BASE_REDESIGN = 'https://www.figma.com/design/xUcpiSYpYmGfV3mIA2yHnx/Mamutex---Redesign?node-id=0-1';
 const arrowSVG = '<svg class="section-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
-function figmaLink(num) {
-  return '<a class="figma-link" href="' + FIGMA_BASE + '&comment-id=' + num + '" target="_blank" rel="noopener">#' + num + '</a>';
+function figmaLink(num, base) {
+  const b = base || FIGMA_BASE;
+  return '<a class="figma-link" href="' + b + '&comment-id=' + num + '" target="_blank" rel="noopener">#' + num + '</a>';
 }
 
 function tagPill(t) {
@@ -244,6 +246,72 @@ function tagPill(t) {
 }
 
 const sections = [
+  {
+    id: "FR", name: "Final Review \u2014 Mamutex Redesign (21.\u201322.4.2026)",
+    fileBase: FIGMA_BASE_REDESIGN,
+    tasks: [
+      // ========== KLIENT \u2014 Radim Bure\u0161 (21.4.) ==========
+      { id:"FR.1", desc:"KLIENT (Radim): Pa\u010dia sa mi ikonky v \u013eavom n\u00e1vrhu \u2014 naru\u0161uj\u00fa jednoliatos\u0165 textu", priority:"Vysok\u00e1", figma:["1726783713"], tags:["#klient","#radim"], explain:"Pozit\u00edvny feedback na variant s ikonami" },
+      { id:"FR.2", desc:"KLIENT (Radim): Obr\u00e1zky produktov vy\u0161\u0161ie ako background box p\u00f4sobia ako chyba", priority:"Vysok\u00e1", figma:["1726784949"], tags:["#klient","#radim"], explain:"Osobn\u00fd n\u00e1zor k \"vyl\u00e1zaciemu\" designu" },
+      { id:"FR.3", desc:"KLIENT (Radim): Rozpada\u0165 rozmery (V\u00d7\u0160\u00d7H) u\u017e vo v\u00fdpise kateg\u00f3rie \u2014 z\u00e1kazn\u00edk \u010dasto netu\u0161\u00ed, \u010do je \u010do", priority:"Vysok\u00e1", figma:["1726788505"], tags:["#klient","#radim","#produktova-karta"], explain:"Rozmery nesta\u010d\u00ed ma\u0165 len v gal\u00e9rii/popise" },
+
+      // ========== KLIENT \u2014 Radek (22.4.) ==========
+      { id:"FR.4", desc:"KLIENT (Radek): Ikony sa mi nep\u00e1\u010dia \u2014 \u00fapln\u011b in\u00fd \u0161t\u00fdl ne\u017e zvy\u0161ok webu, nehod\u00ed sa to", priority:"Vysok\u00e1", figma:["1729001540"], tags:["#klient","#radek"], explain:"Opa\u010dn\u00fd n\u00e1zor ne\u017e Radim \u2014 treba zjednoti\u0165" },
+      { id:"FR.5", desc:"KLIENT (Radek): Fotky s\u00fa mal\u00e9 \u2014 zv\u00e4\u010d\u0161i\u0165", priority:"Vysok\u00e1", figma:["1729005585","1729006169"], tags:["#klient","#radek"], explain:"Dve samostatn\u00e9 pripomienky na rovnak\u00fa vec" },
+      { id:"FR.6", desc:"KLIENT (Radek): Ch\u00fdba zapracovan\u00e9 info k doprave", priority:"Vysok\u00e1", figma:["1729006615"], tags:["#klient","#radek","#produktova-karta"], explain:"Doprava pri \u0165a\u017ekom tovare je kritick\u00e1 info" },
+
+      // ========== KONTRAST / WCAG (kritick\u00e9 \u2014 FAIL na color.review) ==========
+      { id:"FR.7", desc:"Kontrast FAIL: konverzn\u00e1 \u010derven\u00e1 #F13249 na bielej \u2014 upravi\u0165 odtie\u0148", priority:"Kritick\u00e1", figma:["1728697360"], tags:["#kontrast","#a11y","#wcag"], explain:"https://color.review/check/FFFFFF-F13249 = FAIL" },
+      { id:"FR.8", desc:"Kontrast FAIL: oran\u017eov\u00e1 #E78B27 na bielej", priority:"Kritick\u00e1", figma:["1728725800"], tags:["#kontrast","#a11y","#wcag"], explain:"https://color.review/check/FFFFFF-E78B27 = FAIL" },
+      { id:"FR.9", desc:"Kontrast FAIL: zelen\u00e1 #25B161 na bielej", priority:"Kritick\u00e1", figma:["1728726460"], tags:["#kontrast","#a11y","#wcag"], explain:"https://color.review/check/FFFFFF-25B161 = FAIL" },
+
+      // ========== DESIGN & VIZU\u00c1LNA KONZISTENCIA ==========
+      { id:"FR.10", desc:"Bannery maj\u00fa ma\u0165 konverzn\u00fa farbu (za\u010diatok konverznej cesty). Vyh\u013ead\u00e1vanie ostane inou farbou", priority:"Vysok\u00e1", figma:["1728692676"], tags:["#konverzia","#design-system"], explain:"N\u00e1v\u0161tevn\u00edk m\u00e1 is\u0165 po jednej farbe kupredu" },
+      { id:"FR.11", desc:"\"Vyl\u00e1zacie\" obr\u00e1zky produktov pou\u017ei\u0165 na viacer\u00fdch prvkoch webu, aby to p\u00f4sobilo ucelene (reply na Radima)", priority:"Vysok\u00e1", figma:["1728694588","1728717479"], tags:["#design-system","#diskusia"], explain:"Ke\u010f len jediny prvok, p\u00f4sob\u00ed to \u010dudne. Na mobile je efekt men\u0161\u00ed \u2014 zjednoti\u0165" },
+      { id:"FR.12", desc:"Te\u010dn\u00e1 linka v 2. riadku \u2014 zamer alebo chyba?", priority:"St\u0159edn\u00ed", figma:["1728694869"], tags:["#diskusia"], explain:"Ot\u00e1zka na designera" },
+      { id:"FR.13", desc:"Jedna kateg\u00f3ria ako ak\u010dn\u00e1 (V\u00fdprodej/BlackFriday) \u2014 meniteln\u00e1 pod\u013ea MKT aktivit", priority:"Vysok\u00e1", figma:["1728696057"], tags:["#marketing","#kategorie"], explain:"Flexibilita pre kampane" },
+      { id:"FR.14", desc:"Grafick\u00e9 spracovanie \u010fal\u0161\u00edch \u0161t\u00edtkov", priority:"St\u0159edn\u00ed", figma:["1728700243"], tags:["#design-system"], explain:"Sada variant\u00edt \u0161t\u00edtkov" },
+      { id:"FR.15", desc:"Prvok je pr\u00edli\u0161 vysok\u00fd \u2014 zminimalizova\u0165", priority:"St\u0159edn\u00ed", figma:["1728704120"], tags:["#spacing"], explain:"Zbyto\u010dne robustn\u00fd" },
+      { id:"FR.16", desc:"Menej vzdu\u0161nosti \u2014 nadpis bli\u017e\u0161ie k sekcii (zhoduje sa so sekciami vy\u0161\u0161ie)", priority:"St\u0159edn\u00ed", figma:["1728704585"], tags:["#spacing"], explain:"Konzistencia spacingu" },
+      { id:"FR.17", desc:"Menej vzdu\u0161nosti \u2014 str\u00e1nka je zbyto\u010dne vysok\u00e1", priority:"St\u0159edn\u00ed", figma:["1728707423","1728716453"], tags:["#spacing"], explain:"Dve samostatn\u00e9 miesta s prili\u0161 ve\u013ek\u00fdm spacingom" },
+      { id:"FR.18", desc:"Okolo kr\u00ed\u017eika nem\u00e1 by\u0165 okraj \u2014 zbyto\u010dne prit\u00e1ha pozornos\u0165", priority:"N\u00edzk\u00e1", figma:["1728726840"], tags:["#detail"], explain:"Mal\u00fd vizu\u00e1lny detail" },
+
+      // ========== KONVERZN\u00c1 CESTA & ODKAZY ==========
+      { id:"FR.19", desc:"Odkazy sa str\u00e1caj\u00fa \u2014 prida\u0165 podtrhnutie (sekcia \"Sme Mamutex\" to m\u00e1 spr\u00e1vne)", priority:"Vysok\u00e1", figma:["1728701363"], tags:["#konverzia","#odkazy"], explain:"Nevidno, \u017ee ide o aktivne prvky" },
+      { id:"FR.20", desc:"Odstr\u00e1ni\u0165 tla\u010d\u00edtko \u2014 koliduje s \"Zobrazi\u0165\" vy\u0161\u0161ie, hlavn\u00e1 CTA m\u00e1 by\u0165 prihl\u00e1senie k odberu", priority:"Vysok\u00e1", figma:["1728705703"], tags:["#konverzia"], explain:"Dve CTA v tej istej sekcii rozdelia pozornos\u0165" },
+      { id:"FR.21", desc:"Ikony s v\u00fdhodami pri newsletter signup \u2014 zvy\u0161uj\u00fa konverziu (denatura.cz, kulina.cz)", priority:"Vysok\u00e1", figma:["1728708581"], tags:["#konverzia","#newsletter"], explain:"Otestovan\u00e9 na in\u00fdch projektoch" },
+      { id:"FR.22", desc:"Ikona e-mailu misto inej ikony pri signup \u2014 viac vypovedajuce", priority:"St\u0159edn\u00ed", figma:["1728708870"], tags:["#newsletter"], explain:"Jasn\u00e9 pochopenie field-u" },
+      { id:"FR.23", desc:"\u0160t\u00fdl tla\u010d\u00edtka zjednoti\u0165 (ako pole pre vyh\u013ead\u00e1vanie) \u2014 uceleny design", priority:"St\u0159edn\u00ed", figma:["1728709333"], tags:["#design-system"], explain:"Novy \u0161t\u00fdl nikde inde na webe" },
+      { id:"FR.24", desc:"Telefon podtrhnut\u00fd a klikatelny \u2014 aby mohli rovno vola\u0165", priority:"Vysok\u00e1", figma:["1728724356"], tags:["#konverzia","#kontakt"], explain:"Mobile-first call to action" },
+
+      // ========== MOBIL vs DESKTOP NES\u00daLAD ==========
+      { id:"FR.25", desc:"Prida\u0165 \u0161ipku do strany pre jednoduch\u0161\u00ed posun \u2014 karta produktu je vysok\u00e1", priority:"Vysok\u00e1", figma:["1728718081"], tags:["#mobil","#karusel"], explain:"Pohodlnej\u0161\u00ed posun nab\u00eddky" },
+      { id:"FR.26", desc:"Na mobile 4 produkty ved\u013ea seba (nie 6) \u2014 pre HP je 6 ve\u013ea", priority:"Vysok\u00e1", figma:["1728718648"], tags:["#mobil"], explain:"6 je moc pre HP ve\u013ekos\u0165" },
+      { id:"FR.27", desc:"Play ikonka na stred aj na desktope (ako na mobile) \u2014 jedno zadanie pre dev", priority:"St\u0159edn\u00ed", figma:["1728719564"], tags:["#mobil","#video"], explain:"CTA vid\u00ed jasnej\u0161ie" },
+      { id:"FR.28", desc:"Zjednoti\u0165 polo\u017eky menu medzi mobilom a desktopom", priority:"Vysok\u00e1", figma:["1728727697"], tags:["#mobil","#menu"], explain:"Teraz su rozne \u2014 ne\u010ditate\u013en\u00e9 pre dev" },
+      { id:"FR.29", desc:"Text \"Kateg\u00f3rie\" m\u00e1 by\u0165 polo\u017ekou menu, nie samostatn\u00fdm nadpisom (ako na desktop variante)", priority:"Vysok\u00e1", figma:["1728728856"], tags:["#mobil","#menu"], explain:"Zjednotenie \u0161trukt\u00fary menu" },
+
+      // ========== UX PATTERNS & KONKR\u00c9TNE ODPOR\u00da\u010cANIA ==========
+      { id:"FR.30", desc:"Ikony pri kateg\u00f3riach \u2014 rad\u0161ej ni\u017e\u0161ie ako v menu (hlavne na mobile kvoli orient\u00e1cii)", priority:"St\u0159edn\u00ed", figma:["1728690651"], tags:["#ikony","#mobil"], explain:"Reply na Radimov komentar \u2014 cistedrevo.cz ako pr\u00edklad" },
+      { id:"FR.31", desc:"Podtrhnut\u00e9 d\u00e1tum \u2014 z\u00e1mer? Preferuje bez podtrhnutia, pop-up a\u017e na detail produktu", priority:"N\u00edzk\u00e1", figma:["1728698109"], tags:["#diskusia"], explain:"Ot\u00e1zka na design/UX" },
+      { id:"FR.32", desc:"Str\u00e1nkovanie menej v\u00fdrazn\u00e9 \u2014 svetle fialov\u00e9 pozadie, aby neprebijalo konverzn\u00fa cestu", priority:"St\u0159edn\u00ed", figma:["1728699799"], tags:["#navig\u00e1cia"], explain:"Treba test na mobile pozornosti" },
+      { id:"FR.33", desc:"Naposledy prehliadan\u00e9 produkty \u2014 6 ved\u013ea seba (nie 4) pre jemne odl\u00ed\u0161enie od klasick\u00e9ho v\u00fdpisu", priority:"St\u0159edn\u00ed", figma:["1728703095"], tags:["#produktovy-vypis"], explain:"Vid\u00ed viac \u010do prehliadali" },
+      { id:"FR.34", desc:"V\u00fdpis posledn\u00fdch Instagram postov? \u2014 building community, re\u00e1lne pou\u017eitie produktov v interi\u00e9ri", priority:"St\u0159edn\u00ed", figma:["1728706901"], tags:["#diskusia","#social"], explain:"Zamer z div\u00fdch diskusii?" },
+      { id:"FR.35", desc:"Menu na \u013eavej strane (nie pravej) \u2014 pr\u00edstupnos\u0165 prstom pri mobil hold (UX Matters study)", priority:"Vysok\u00e1", figma:["1728715335"], tags:["#mobil","#menu","#ux-research"], explain:"Vy\u0161\u0161ia vyu\u017eitelnost menu pod\u013ea testov" },
+      { id:"FR.36", desc:"V ko\u0161\u00edku kole\u010dko aj pri 0 produktoch", priority:"N\u00edzk\u00e1", figma:["1728715611"], tags:["#kosik","#detail"], explain:"Konzistentn\u00e9 UX \u2014 v\u017edy je vidie\u0165 indik\u00e1tor" },
+      { id:"FR.37", desc:"Ch\u00fdba odkaz \"Ako overujeme recenzie?\"", priority:"St\u0159edn\u00ed", figma:["1728720998"], tags:["#recenzie","#d\u00f4veryhodnos\u0165"], explain:"Transparentnos\u0165 pri recenzi\u00e1ch" },
+      { id:"FR.38", desc:"Tla\u010d\u00edtko na desktop vs mobile \u2014 zjednoti\u0165. Preferuje odstr\u00e1ni\u0165", priority:"St\u0159edn\u00ed", figma:["1728721508"], tags:["#mobil","#konzistencia"], explain:"In\u00e9 spracovanie na kazdej verzii" },
+      { id:"FR.39", desc:"Text namackany na okraj \u2014 hor\u0161ie \u010ditate\u013en\u00fd", priority:"St\u0159edn\u00ed", figma:["1728721757"], tags:["#citate\u013enos\u0165","#spacing"], explain:"Potrebuje padding" },
+
+      // ========== MODAL / OVERLAY ==========
+      { id:"FR.40", desc:"Kr\u00ed\u017eik pre zatvorenie okna ch\u00fdba", priority:"Vysok\u00e1", figma:["1728724539"], tags:["#modal"], explain:"Basic UX \u2014 user musi vediet zatvorit" },
+      { id:"FR.41", desc:"Medzistav pri volan\u00ed \u2014 zbyto\u010dn\u00fd krok? Da\u0165 rovno volanie bez medzistavu", priority:"St\u0159edn\u00ed", figma:["1728725060"], tags:["#modal","#kontakt","#diskusia"], explain:"Less friction = viac volani" },
+      { id:"FR.42", desc:"Zvysok webu ma by\u0165 stmaveny ke\u010f je menu otvoren\u00e9", priority:"St\u0159edn\u00ed", figma:["1728729316"], tags:["#menu","#overlay"], explain:"Focus user na obsah menu" },
+
+      // ========== POZIT\u00cdVNY SUMMARY ==========
+      { id:"FR.43", desc:"\u2705 KVASNI\u010cKA FINAL: \"Pekny den vsem, super praca na tejto verzii, pekne to prekuklo a za m\u0148a je to o parn\u00edk lep\u0161ie ne\u017e p\u00f4vodna varianta. D\u00edky moc!\"", priority:"Vysok\u00e1", figma:["1728730102"], tags:["#pozitivne","#kvasnicka"], explain:"Tagy @Pavol @radek @Radim \u2014 overall positive signal" }
+    ]
+  },
   {
     id: 1, name: "Design System / Celkov\u00fd redesign",
     tasks: [
@@ -615,7 +683,7 @@ function getPriorityClass(p) {
 const tocList = document.getElementById('tocList');
 sections.forEach(s => {
   const li = document.createElement('li');
-  li.innerHTML = '<a href="#section-' + s.id + '" onclick="openSection(event,' + s.id + ')"><span class="toc-num">' + s.id + '.</span><span class="toc-name">' + s.name + '</span><span class="toc-count">' + s.tasks.length + ' \u00faloh</span></a>';
+  li.innerHTML = '<a href="#section-' + s.id + '" onclick="openSection(event,\'' + s.id + '\')"><span class="toc-num">' + s.id + '.</span><span class="toc-name">' + s.name + '</span><span class="toc-count">' + s.tasks.length + ' \u00faloh</span></a>';
   tocList.appendChild(li);
 });
 
@@ -636,13 +704,13 @@ sections.forEach((s, idx) => {
   const block = document.createElement('div');
   block.className = 'section-block';
   block.id = 'section-' + s.id;
-  const isOpen = s.id === 1;
+  const isOpen = s.id === "FR";
 
   let tasksHTML = '';
   s.tasks.forEach(t => {
     let figmaHTML = '';
     if (t.figma && t.figma.length > 0) {
-      figmaHTML = t.figma.map(f => figmaLink(f)).join(' ');
+      figmaHTML = t.figma.map(f => figmaLink(f, s.fileBase)).join(' ');
     } else {
       figmaHTML = '<span style="font-size:10px;color:#94a3b8;font-style:italic">\u2014</span>';
     }
@@ -692,7 +760,7 @@ sections.forEach(s => total += s.tasks.length);
 console.log('Total tasks: ' + total);
 
 // ============ STATE MANAGEMENT (Checkboxes & Progress) ============
-const STORAGE_KEY = 'mamutex_ux_brief_progress_v4';
+const STORAGE_KEY = 'mamutex_ux_brief_progress_v5';
 const allTaskIds = [];
 sections.forEach(s => s.tasks.forEach(t => allTaskIds.push(t.id)));
 const TOTAL_TASKS = allTaskIds.length;
