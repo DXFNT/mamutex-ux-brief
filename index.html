@@ -232,13 +232,15 @@ a:hover{color:#05024E}
 </div>
 
 <script>
-const FIGMA_BASE = 'https://www.figma.com/design/ZRnydfJQYihgeCcNMXZ09q/Mamutex.cz---Anal%C3%BDza-pou%C5%BEitelnosti?node-id=0-1';
-const FIGMA_BASE_REDESIGN = 'https://www.figma.com/design/xUcpiSYpYmGfV3mIA2yHnx/Mamutex---Redesign?node-id=0-1';
+const FIGMA_BASE = 'https://www.figma.com/design/ZRnydfJQYihgeCcNMXZ09q/Mamutex.cz---Anal%C3%BDza-pou%C5%BEitelnosti';
+const FIGMA_BASE_REDESIGN = 'https://www.figma.com/design/xUcpiSYpYmGfV3mIA2yHnx/Mamutex---Redesign';
 const arrowSVG = '<svg class="section-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
 function figmaLink(num, base) {
   const b = base || FIGMA_BASE;
-  return '<a class="figma-link" href="' + b + '&comment-id=' + num + '" target="_blank" rel="noopener">#' + num + '</a>';
+  // Skr\u00e1ten\u00fd displej pre dlh\u00e9 ID (posledn\u00fdch 4 znakov), inak cel\u00e9
+  const display = (String(num).length > 8) ? ('#' + String(num).slice(-4)) : ('#' + num);
+  return '<a class="figma-link" href="' + b + '?m=auto#comment-' + num + '" target="_blank" rel="noopener" title="Koment\u00e1r ' + num + '">' + display + '</a>';
 }
 
 function tagPill(t) {
