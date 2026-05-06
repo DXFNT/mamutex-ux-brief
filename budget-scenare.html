@@ -112,6 +112,17 @@
   .scenario.variant-b { border-color: #0065F7; border-width: 2px; }
   .scenario.variant-a { border-color: #05024E; border-width: 2px; }
   .scenario.variant-c { border-color: #d1d5db; background: #fafafa; }
+  .scenario.variant-c.not-pursued { opacity: 0.55; }
+  .scenario.variant-c.not-pursued h2,
+  .scenario.variant-c.not-pursued .tagline,
+  .scenario.variant-c.not-pursued .price-row,
+  .scenario.variant-c.not-pursued .price-note { text-decoration: line-through; text-decoration-color: #9ca3af; }
+  .not-pursued-banner {
+    background: #1f2937; color: #fff; border-radius: 8px; padding: 14px 18px;
+    margin-bottom: 18px; font-size: 14px; line-height: 1.55;
+  }
+  .not-pursued-banner strong { display: block; font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #fbbf24; margin-bottom: 4px; }
 
   .badge {
     display: inline-block; font-size: 11px; font-weight: 600;
@@ -164,6 +175,7 @@
   .hours-table tr:last-child td { border-bottom: none; }
   .hours-table .total td { font-weight: 600; color: #05024E; border-top: 1px solid #e8eaf0; }
   .hours-table .done td { color: #9ca3af; }
+  .hours-table em { color: #ff7f00; font-style: normal; font-weight: 600; }
 
   /* ── HANDOFF BOX ── */
   .handoff-box {
@@ -343,7 +355,11 @@
   <!-- ══════════════════════════════════
        VARIANT C — EXIT AFTER PHASE 1
   ══════════════════════════════════ -->
-  <div class="scenario variant-c">
+  <div class="scenario variant-c not-pursued">
+    <div class="not-pursued-banner">
+      <strong>Neideme realizovať</strong>
+      Po spoločnom calle sme sa zhodli, že namiesto úplného ukončenia projektu pokračujeme so Scenárom B. Pre odložené sekcie (vyhľadávanie, obsahové stránky a blog, zákaznícky účet) zvažujeme zapojenie lacnejšieho dizajnéra, ktorý nadviaže na existujúce výstupy a design system z fázy 1.
+    </div>
     <span class="badge grey">Scenár C — Ukončenie po fáze 1</span>
     <h2>Akceptovať fázu 1 ako míľnik</h2>
     <p class="tagline">Fáza 1 je samostatný uzavretý výsledok. Fázu 2 môžete zadať inému dodávateľovi alebo riešiť neskôr.</p>
